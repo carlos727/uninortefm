@@ -43,7 +43,7 @@
 				</ul>
 			</aside>
 
-			<section class="col s9 offset-s2">
+			<section class="col s10 offset-s2">
 				@yield('content')
 			</section>
 

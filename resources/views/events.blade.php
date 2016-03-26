@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	
+
 	<header>
 		<div class="row">
 			<h2>Gestor de Contenidos Uninorte FM</h2>
@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s1"><a class="active" href="#lunes">Lunes</a></li>
+				<li class="tab col s1"><a href="#lunes">Lunes</a></li>
 				<li class="tab col s1"><a href="#martes">Martes</a></li>
 				<li class="tab col s1"><a href="#miercoles">Miercoles</a></li>
 				<li class="tab col s1"><a href="#jueves">Jueves</a></li>
@@ -64,13 +64,22 @@
 			</div>
 			@if (count($events) > 0)
 				<table class="striped">
+					<?php $a=0 ?>
+					@foreach ($events as $event)
+						@if ($event->day == 1)
+							<?php $a++; ?>
+						@endif
+					@endforeach
+
 					<thead>
-						<tr>
-							<th data-field="name">Nombre</th>
-							<th data-field="start_at">Inicio</th>
-							<th data-field="end_at">Fin</th>
-							<th data-field="actions">Acciones</th>
-						</tr>
+						<?php if ($a > 0) { ?>
+							<tr>
+								<th data-field="name">Nombre</th>
+								<th data-field="start_at">Inicio</th>
+								<th data-field="end_at">Fin</th>
+								<th data-field="actions">Acciones</th>
+							</tr>
+						<?php } ?>
 					</thead>
 
 					<tbody>
@@ -173,13 +182,22 @@
 			</div>
 			@if (count($events) > 0)
 				<table class="striped">
+					<?php $a=0 ?>
+					@foreach ($events as $event)
+						@if ($event->day == 2)
+							<?php $a++; ?>
+						@endif
+					@endforeach
+
 					<thead>
-						<tr>
-							<th data-field="name">Nombre</th>
-							<th data-field="start_at">Inicio</th>
-							<th data-field="end_at">Fin</th>
-							<th data-field="actions">Acciones</th>
-						</tr>
+						<?php if ($a > 0) { ?>
+							<tr>
+								<th data-field="name">Nombre</th>
+								<th data-field="start_at">Inicio</th>
+								<th data-field="end_at">Fin</th>
+								<th data-field="actions">Acciones</th>
+							</tr>
+						<?php } ?>
 					</thead>
 
 					<tbody>
@@ -282,13 +300,22 @@
 			</div>
 			@if (count($events) > 0)
 				<table class="striped">
+					<?php $a=0 ?>
+					@foreach ($events as $event)
+						@if ($event->day == 3)
+							<?php $a++; ?>
+						@endif
+					@endforeach
+
 					<thead>
-						<tr>
-							<th data-field="name">Nombre</th>
-							<th data-field="start_at">Inicio</th>
-							<th data-field="end_at">Fin</th>
-							<th data-field="actions">Acciones</th>
-						</tr>
+						<?php if ($a > 0) { ?>
+							<tr>
+								<th data-field="name">Nombre</th>
+								<th data-field="start_at">Inicio</th>
+								<th data-field="end_at">Fin</th>
+								<th data-field="actions">Acciones</th>
+							</tr>
+						<?php } ?>
 					</thead>
 
 					<tbody>
@@ -391,13 +418,22 @@
 			</div>
 			@if (count($events) > 0)
 				<table class="striped">
+					<?php $a=0 ?>
+					@foreach ($events as $event)
+						@if ($event->day == 4)
+							<?php $a++; ?>
+						@endif
+					@endforeach
+
 					<thead>
-						<tr>
-							<th data-field="name">Nombre</th>
-							<th data-field="start_at">Inicio</th>
-							<th data-field="end_at">Fin</th>
-							<th data-field="actions">Acciones</th>
-						</tr>
+						<?php if ($a > 0) { ?>
+							<tr>
+								<th data-field="name">Nombre</th>
+								<th data-field="start_at">Inicio</th>
+								<th data-field="end_at">Fin</th>
+								<th data-field="actions">Acciones</th>
+							</tr>
+						<?php } ?>
 					</thead>
 
 					<tbody>
@@ -500,13 +536,22 @@
 			</div>
 			@if (count($events) > 0)
 				<table class="striped">
+					<?php $a=0 ?>
+					@foreach ($events as $event)
+						@if ($event->day == 5)
+							<?php $a++; ?>
+						@endif
+					@endforeach
+
 					<thead>
-						<tr>
-							<th data-field="name">Nombre</th>
-							<th data-field="start_at">Inicio</th>
-							<th data-field="end_at">Fin</th>
-							<th data-field="actions">Acciones</th>
-						</tr>
+						<?php if ($a > 0) { ?>
+							<tr>
+								<th data-field="name">Nombre</th>
+								<th data-field="start_at">Inicio</th>
+								<th data-field="end_at">Fin</th>
+								<th data-field="actions">Acciones</th>
+							</tr>
+						<?php } ?>
 					</thead>
 
 					<tbody>
@@ -609,13 +654,22 @@
 			</div>
 			@if (count($events) > 0)
 				<table class="striped">
+					<?php $a=0 ?>
+					@foreach ($events as $event)
+						@if ($event->day == 6)
+							<?php $a++; ?>
+						@endif
+					@endforeach
+
 					<thead>
-						<tr>
-							<th data-field="name">Nombre</th>
-							<th data-field="start_at">Inicio</th>
-							<th data-field="end_at">Fin</th>
-							<th data-field="actions">Acciones</th>
-						</tr>
+						<?php if ($a > 0) { ?>
+							<tr>
+								<th data-field="name">Nombre</th>
+								<th data-field="start_at">Inicio</th>
+								<th data-field="end_at">Fin</th>
+								<th data-field="actions">Acciones</th>
+							</tr>
+						<?php } ?>
 					</thead>
 
 					<tbody>
@@ -718,13 +772,22 @@
 			</div>
 			@if (count($events) > 0)
 				<table class="striped">
+					<?php $a=0 ?>
+					@foreach ($events as $event)
+						@if ($event->day == 7)
+							<?php $a++; ?>
+						@endif
+					@endforeach
+
 					<thead>
-						<tr>
-							<th data-field="name">Nombre</th>
-							<th data-field="start_at">Inicio</th>
-							<th data-field="end_at">Fin</th>
-							<th data-field="actions">Acciones</th>
-						</tr>
+						<?php if ($a > 0) { ?>
+							<tr>
+								<th data-field="name">Nombre</th>
+								<th data-field="start_at">Inicio</th>
+								<th data-field="end_at">Fin</th>
+								<th data-field="actions">Acciones</th>
+							</tr>
+						<?php } ?>
 					</thead>
 
 					<tbody>

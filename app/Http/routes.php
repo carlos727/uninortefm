@@ -16,6 +16,10 @@ Route::group(['middleware' => 'web'], function () {
 		]);
 	});
 
+	Route::get('/request-json-model', function(){
+		return Event::all();
+	});
+
 	/*
 	* Add New Event
 	*/
