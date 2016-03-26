@@ -1,0 +1,42 @@
+header {
+	border-bottom: 1px solid #CCC; }
+	header .row {
+	margin-bottom: 0;
+}
+
+section {
+	padding-left: 30px !important;
+}
+
+table {	margin-top: 40px; }
+
+#lunes, #martes, #miercoles, #jueves, #viernes, #sabado, #domingo {	margin-top: 45px; }
+
+.side-nav a { height: 40px; }
+
+.side-nav li { border-bottom: 1px solid #CCC; }
+
+.side-nav li p {
+	font-size: 18px;
+	display: inline-block;
+	line-height: 1;
+	margin: 0;
+}
+
+.dropdown-content li, .dropdown-content li > a {
+	line-height: 40px;
+	min-height: 40px;
+}
+
+.modal { width: 40%; }
+
+.modal .modal-footer .btn {	float: none; }
+
+.btn { padding: 0 1em; }
+
+.alert {
+	background-color:#ef9a9a;
+	border-radius:5px;
+	padding:15px 0;
+	margin:15px 0;
+}
