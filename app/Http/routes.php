@@ -17,7 +17,15 @@ Route::group(['middleware' => 'web'], function () {
 	});
 
 	Route::get('/json', function(){
-		return Event::all();
+		return Event::all()->toJson();
+	});
+
+	Route::get('/json/lunes', function(){
+		$events = DB::table('events')
+					->where('day','=',1)
+					->get();
+
+		return Response::json($events);
 	});
 
 	/*
