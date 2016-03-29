@@ -22,7 +22,62 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('/json/lunes', function(){
 		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at')
 					->where('day','=',1)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/martes', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at')
+					->where('day','=',2)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/miercoles', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at')
+					->where('day','=',3)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/jueves', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at')
+					->where('day','=',4)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/viernes', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at')
+					->where('day','=',5)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/sabado', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at')
+					->where('day','=',6)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/domingo', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at')
+					->where('day','=',7)
 					->get();
 
 		return Response::json($events);
