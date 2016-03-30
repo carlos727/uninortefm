@@ -24,8 +24,8 @@
 		</div>
 		<div id="lunes" class="col s12">
 			<div class="row center">
-				<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Nuevo Contenido</a>
-				<div id="modal1" class="modal">
+				<a class="waves-effect waves-light btn modal-trigger" href="#modal-lunes">Nuevo Contenido</a>
+				<div id="modal-lunes" class="modal">
 					<div class="modal-content">
 						<h4>Nuevo Contenido</h4>
 						<div class="row">
@@ -90,8 +90,8 @@
 									<td><div>{{ $event->start_at }}</div></td>
 									<td><div>{{ $event->end_at }}</div></td>
 									<td>
-										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal2" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
-										<div id="modal2" class="modal">
+										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal{{ $event->id }}" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
+										<div id="modal{{ $event->id }}" class="modal">
 											<div class="modal-content center">
 												<h4>Editar Contenido</h4>
 												<div class="row">
@@ -142,8 +142,8 @@
 		</div>
 		<div id="martes" class="col s12">
 			<div class="row center">
-				<a class="waves-effect waves-light btn modal-trigger" href="#modal3">Nuevo Contenido</a>
-				<div id="modal3" class="modal">
+				<a class="waves-effect waves-light btn modal-trigger" href="#modal-martes">Nuevo Contenido</a>
+				<div id="modal-martes" class="modal">
 					<div class="modal-content">
 						<h4>Nuevo Contenido</h4>
 						<div class="row">
@@ -208,8 +208,8 @@
 									<td><div>{{ $event->start_at }}</div></td>
 									<td><div>{{ $event->end_at }}</div></td>
 									<td>
-										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal4" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
-										<div id="modal4" class="modal">
+										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal{{ $event->id }}" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
+										<div id="modal{{ $event->id }}" class="modal">
 											<div class="modal-content center">
 												<h4>Editar Contenido</h4>
 												<div class="row">
@@ -260,8 +260,8 @@
 		</div>
 		<div id="miercoles" class="col s12">
 			<div class="row center">
-				<a class="waves-effect waves-light btn modal-trigger" href="#modal5">Nuevo Contenido</a>
-				<div id="modal5" class="modal">
+				<a class="waves-effect waves-light btn modal-trigger" href="#modal-miercoles">Nuevo Contenido</a>
+				<div id="modal-miercoles" class="modal">
 					<div class="modal-content">
 						<h4>Nuevo Contenido</h4>
 						<div class="row">
@@ -326,8 +326,8 @@
 									<td><div>{{ $event->start_at }}</div></td>
 									<td><div>{{ $event->end_at }}</div></td>
 									<td>
-										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal6" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
-										<div id="modal6" class="modal">
+										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal{{ $event->id }}" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
+										<div id="modal{{ $event->id }}" class="modal">
 											<div class="modal-content center">
 												<h4>Editar Contenido</h4>
 												<div class="row">
@@ -378,8 +378,8 @@
 		</div>
 		<div id="jueves" class="col s12">
 			<div class="row center">
-				<a class="waves-effect waves-light btn modal-trigger" href="#modal7">Nuevo Contenido</a>
-				<div id="modal7" class="modal">
+				<a class="waves-effect waves-light btn modal-trigger" href="#modal-jueves">Nuevo Contenido</a>
+				<div id="modal-jueves" class="modal">
 					<div class="modal-content">
 						<h4>Nuevo Contenido</h4>
 						<div class="row">
@@ -444,8 +444,8 @@
 									<td><div>{{ $event->start_at }}</div></td>
 									<td><div>{{ $event->end_at }}</div></td>
 									<td>
-										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal8" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
-										<div id="modal8" class="modal">
+										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal{{ $event->id }}" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
+										<div id="modal{{ $event->id }}" class="modal">
 											<div class="modal-content center">
 												<h4>Editar Contenido</h4>
 												<div class="row">
@@ -496,8 +496,8 @@
 		</div>
 		<div id="viernes" class="col s12">
 			<div class="row center">
-				<a class="waves-effect waves-light btn modal-trigger" href="#modal9">Nuevo Contenido</a>
-				<div id="modal9" class="modal">
+				<a class="waves-effect waves-light btn modal-trigger" href="#modal-viernes">Nuevo Contenido</a>
+				<div id="modal-viernes" class="modal">
 					<div class="modal-content">
 						<h4>Nuevo Contenido</h4>
 						<div class="row">
@@ -562,8 +562,8 @@
 									<td><div>{{ $event->start_at }}</div></td>
 									<td><div>{{ $event->end_at }}</div></td>
 									<td>
-										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal10" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
-										<div id="modal10" class="modal">
+										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal{{ $event->id }}" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
+										<div id="modal{{ $event->id }}" class="modal">
 											<div class="modal-content center">
 												<h4>Editar Contenido</h4>
 												<div class="row">
@@ -614,8 +614,8 @@
 		</div>
 		<div id="sabado" class="col s12">
 			<div class="row center">
-				<a class="waves-effect waves-light btn modal-trigger" href="#modal11">Nuevo Contenido</a>
-				<div id="modal11" class="modal">
+				<a class="waves-effect waves-light btn modal-trigger" href="#modal-sabado">Nuevo Contenido</a>
+				<div id="modal-sabado" class="modal">
 					<div class="modal-content">
 						<h4>Nuevo Contenido</h4>
 						<div class="row">
@@ -680,8 +680,8 @@
 									<td><div>{{ $event->start_at }}</div></td>
 									<td><div>{{ $event->end_at }}</div></td>
 									<td>
-										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal12" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
-										<div id="modal12" class="modal">
+										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal{{ $event->id }}" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
+										<div id="modal{{ $event->id }}" class="modal">
 											<div class="modal-content center">
 												<h4>Editar Contenido</h4>
 												<div class="row">
@@ -732,8 +732,8 @@
 		</div>
 		<div id="domingo" class="col s12">
 			<div class="row center">
-				<a class="waves-effect waves-light btn modal-trigger" href="#modal13">Nuevo Contenido</a>
-				<div id="modal13" class="modal">
+				<a class="waves-effect waves-light btn modal-trigger" href="#modal-domingo">Nuevo Contenido</a>
+				<div id="modal-domingo" class="modal">
 					<div class="modal-content">
 						<h4>Nuevo Contenido</h4>
 						<div class="row">
@@ -798,8 +798,8 @@
 									<td><div>{{ $event->start_at }}</div></td>
 									<td><div>{{ $event->end_at }}</div></td>
 									<td>
-										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal14" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
-										<div id="modal14" class="modal">
+										<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modal{{ $event->id }}" data-position="left" data-delay="50" data-tooltip="Editar"><i class="material-icons">edit</i></a>
+										<div id="modal{{ $event->id }}" class="modal">
 											<div class="modal-content center">
 												<h4>Editar Contenido</h4>
 												<div class="row">
