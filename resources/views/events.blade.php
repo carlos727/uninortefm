@@ -239,42 +239,42 @@
 																	<div class="row dv-time">
 																		<div class="col s1"><i class="material-icons">alarm</i></div>
 																		<div class="col s3 offset-s1">
-																			<select name="end_at_h">
-																				<option value="00" selected="selected">00</option>
-																				<option value="01">01</option>
-																				<option value="02">02</option>
-																				<option value="03">03</option>
-																				<option value="04">04</option>
-																				<option value="05">05</option>
-																				<option value="06">06</option>
-																				<option value="07">07</option>
-																				<option value="08">08</option>
-																				<option value="09">09</option>
-																				<option value="10">10</option>
-																				<option value="11">11</option>
-																				<option value="12">12</option>
-																				<option value="13">13</option>
-																				<option value="14">14</option>
-																				<option value="15">15</option>
-																				<option value="16">16</option>
-																				<option value="17">17</option>
-																				<option value="18">18</option>
-																				<option value="19">19</option>
-																				<option value="20">20</option>
-																				<option value="21">21</option>
-																				<option value="22">22</option>
-																				<option value="23">23</option>
-																			</select>
+																			{{ Form::select('end_at_h', [
+																				'00' => '00',
+																				'01' => '01',
+																				'02' => '02',
+																				'03' => '03',
+																				'04' => '04',
+																				'05' => '05',
+																				'06' => '06',
+																				'07' => '07',
+																				'08' => '08',
+																				'09' => '09',
+																				'10' => '10',
+																				'11' => '11',
+																				'12' => '12',
+																				'13' => '13',
+																				'14' => '14',
+																				'15' => '15',
+																				'16' => '16',
+																				'17' => '17',
+																				'18' => '18',
+																				'19' => '19',
+																				'20' => '20',
+																				'21' => '21',
+																				'22' => '22',
+																				'23' => '23'
+																			], substr($event->start_at,0,1) ) }}
 																		</div>
 																		<div class="col s1 offset-s1"><p>:</p></div>
-																		<div class="col s3 dv-time">
-																			<select name="end_at_m">
-																				<option value="00" selected="selected">00</option>
-																				<option value="15">15</option>
-																				<option value="30">30</option>
-																				<option value="45">45</option>
-																				<option value="59">59</option>
-																			</select>
+																		<div class="col s3">
+																			{{ Form::select('end_at_m', [
+																				'00' => '00',
+																				'15' => '15',
+																				'30' => '30',
+																				'45' => '45',
+																				'59' => '59'
+																			], substr($event->start_at,3,4) ) }}
 																		</div>
 																	</div>
 																	<input name="end_at" type="time" class="hide" value=" ">
