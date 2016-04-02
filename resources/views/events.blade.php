@@ -130,12 +130,34 @@
 										<a id="btndlt"  class="waves-effect waves-light btn modal-trigger tooltipped" href="#model{{ $event->id }}" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></a>
 										<div id="model{{ $event->id }}" class="modal">
 											<div class="modal-content">
-												<h4>Eliminar Contenido</h4>
+												<h4 class="center">Eliminar Contenido</h4>
 												<div class="row">
 													<div class="col s4"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
-													<div class="col s8 valign-wrapper"><p>¿Estas seguro de borrar este contenido?</p></div>
+													<div class="col s8">
+														<p>¿Estas seguro de borrar este contenido?</p>
+														<p>Nombre: {{ $event->name }}</p>
+														<p>Hora de Inicio: {{ $event->start_at }}</p>
+														<p>Hora de Finalizacion: {{ $event->end_at }}</p>
+														<p>Dia: 
+															@if ($event->day == 1)
+																"Lunes"
+															@elseif ($event->day == 2)
+																"Martes"
+															@elseif ($event->day == 3)
+																"Miercoles"
+															@elseif ($event->day == 4)
+																"Jueves"
+															@elseif ($event->day == 5)
+																"Viernes"
+															@elseif ($event->day == 6)
+																"Sabado"
+															@else
+																"Domingo"
+															@endif
+														</p>
+													</div>
 												</div>
-												<form action="{{ url('event/'.$event->id) }}" method="POST">
+												<form action="{{ url('event/'.$event->id) }}" method="POST" class="center">
 													{!! csrf_field() !!}
 													{!! method_field('DELETE') !!}
 													<button type="submit" class="btn modal-action modal-close waves-effect waves-green">Eliminar</button>
