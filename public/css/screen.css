@@ -45,7 +45,10 @@ table {
 
 .row .col{ padding:0; }
 
-.btn { background-color:black; }
+.btn {
+	background-color:black;
+	padding: 0 1em;
+}
 
 .btn:hover {
 	background-color:#ffcd00;
@@ -81,9 +84,10 @@ table {
 
 .modal { width: 40%; }
 
-.modal .modal-footer .btn {	float: none; }
-
-.btn { padding: 0 1em; }
+.modal-content img {
+	height:120px;
+	width:120px;
+}
 
 .alert {
 	background-color:#ef9a9a;

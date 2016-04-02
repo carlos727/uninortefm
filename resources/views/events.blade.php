@@ -43,14 +43,84 @@
 										<label for="event-start-at">Hora de Inicio</label>
 										<div id="event-start-at" class="input-field">
 											<i class="material-icons prefix">alarm</i>
-											<input name="start_at" type="time">
+											<div class="row">
+												{{ Form::select('start_at_h', [
+													'00' => '00'
+													'01' => '01'
+													'02' => '02'
+													'03' => '03'
+													'04' => '04'
+													'05' => '05'
+													'06' => '06'
+													'07' => '07'
+													'08' => '08'
+													'09' => '09'
+													'10' => '10'
+													'11' => '11'
+													'12' => '12'
+													'13' => '13'
+													'14' => '14'
+													'15' => '15'
+													'16' => '16'
+													'17' => '17'
+													'18' => '18'
+													'19' => '19'
+													'20' => '20'
+													'21' => '21'
+													'22' => '22'
+													'23' => '23'
+												], '00', ['class' => 'col s6']) }}
+												{{ Form::select('start_at_m', [
+													'00' => '00'
+													'15' => '15'
+													'30' => '30'
+													'45' => '45'
+													'59' => '59'
+												], '00', ['class' => 'col s6']) }}
+											</div>
+											<input name="start_at" type="time" class="hide" value="">
 										</div>
 									</div>
 									<div class="col s6">
 										<label for="event-end-at">Hora de Finalizacion</label>
 										<div id="event-end-at" class="input-field">
 											<i class="material-icons prefix">alarm</i>
-											<input name="end_at" type="time">
+											<div class="row">
+												{{ Form::select('end_at_h', [
+													'00' => '00'
+													'01' => '01'
+													'02' => '02'
+													'03' => '03'
+													'04' => '04'
+													'05' => '05'
+													'06' => '06'
+													'07' => '07'
+													'08' => '08'
+													'09' => '09'
+													'10' => '10'
+													'11' => '11'
+													'12' => '12'
+													'13' => '13'
+													'14' => '14'
+													'15' => '15'
+													'16' => '16'
+													'17' => '17'
+													'18' => '18'
+													'19' => '19'
+													'20' => '20'
+													'21' => '21'
+													'22' => '22'
+													'23' => '23'
+												], '00', ['class' => 'col s6']) }}
+												{{ Form::select('end_at_m', [
+													'00' => '00'
+													'15' => '15'
+													'30' => '30'
+													'45' => '45'
+													'59' => '59'
+												], '00', ['class' => 'col s6']) }}
+											</div>
+											<input name="end_at" type="time" class="hide" value="">
 										</div>
 									</div>
 								</div>
@@ -132,9 +202,9 @@
 											<div class="modal-content">
 												<h4 class="center">Eliminar Contenido</h4>
 												<div class="row">
-													<div class="col s4"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
+													<div class="col s4 center"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
 													<div id="del-cont" class="col s8">
-														<p>¿Estas seguro de borrar este contenido?</p>
+														<p><b>¿Estas seguro de borrar este contenido?</b></p>
 														<p>Nombre: {{ $event->name }}</p>
 														<p>Hora de Inicio: {{ $event->start_at }}</p>
 														<p>Hora de Finalizacion: {{ $event->end_at }}</p>
@@ -282,9 +352,9 @@
 											<div class="modal-content">
 												<h4 class="center">Eliminar Contenido</h4>
 												<div class="row">
-													<div class="col s4"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
+													<div class="col s4 center"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
 													<div id="del-cont" class="col s8">
-														<p>¿Estas seguro de borrar este contenido?</p>
+														<p><b>¿Estas seguro de borrar este contenido?</b></p>
 														<p>Nombre: {{ $event->name }}</p>
 														<p>Hora de Inicio: {{ $event->start_at }}</p>
 														<p>Hora de Finalizacion: {{ $event->end_at }}</p>
@@ -432,9 +502,9 @@
 											<div class="modal-content">
 												<h4 class="center">Eliminar Contenido</h4>
 												<div class="row">
-													<div class="col s4"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
+													<div class="col s4 center"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
 													<div id="del-cont" class="col s8">
-														<p>¿Estas seguro de borrar este contenido?</p>
+														<p><b>¿Estas seguro de borrar este contenido?</b></p>
 														<p>Nombre: {{ $event->name }}</p>
 														<p>Hora de Inicio: {{ $event->start_at }}</p>
 														<p>Hora de Finalizacion: {{ $event->end_at }}</p>
@@ -582,9 +652,9 @@
 											<div class="modal-content">
 												<h4 class="center">Eliminar Contenido</h4>
 												<div class="row">
-													<div class="col s4"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
+													<div class="col s4 center"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
 													<div id="del-cont" class="col s8">
-														<p>¿Estas seguro de borrar este contenido?</p>
+														<p><b>¿Estas seguro de borrar este contenido?</b></p>
 														<p>Nombre: {{ $event->name }}</p>
 														<p>Hora de Inicio: {{ $event->start_at }}</p>
 														<p>Hora de Finalizacion: {{ $event->end_at }}</p>
@@ -732,9 +802,9 @@
 											<div class="modal-content">
 												<h4 class="center">Eliminar Contenido</h4>
 												<div class="row">
-													<div class="col s4"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
+													<div class="col s4 center"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
 													<div id="del-cont" class="col s8">
-														<p>¿Estas seguro de borrar este contenido?</p>
+														<p><b>¿Estas seguro de borrar este contenido?</b></p>
 														<p>Nombre: {{ $event->name }}</p>
 														<p>Hora de Inicio: {{ $event->start_at }}</p>
 														<p>Hora de Finalizacion: {{ $event->end_at }}</p>
@@ -882,9 +952,9 @@
 											<div class="modal-content">
 												<h4 class="center">Eliminar Contenido</h4>
 												<div class="row">
-													<div class="col s4"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
+													<div class="col s4 center"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
 													<div id="del-cont" class="col s8">
-														<p>¿Estas seguro de borrar este contenido?</p>
+														<p><b>¿Estas seguro de borrar este contenido?</b></p>
 														<p>Nombre: {{ $event->name }}</p>
 														<p>Hora de Inicio: {{ $event->start_at }}</p>
 														<p>Hora de Finalizacion: {{ $event->end_at }}</p>
@@ -1033,8 +1103,8 @@
 												<h4 class="center">Eliminar Contenido</h4>
 												<div class="row">
 													<div class="col s4"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
-													<div id="del-cont" class="col s8">
-														<p>¿Estas seguro de borrar este contenido?</p>
+													<div id="del-cont" class="col s8 center">
+														<p><b>¿Estas seguro de borrar este contenido?</b></p>
 														<p>Nombre: {{ $event->name }}</p>
 														<p>Hora de Inicio: {{ $event->start_at }}</p>
 														<p>Hora de Finalizacion: {{ $event->end_at }}</p>
