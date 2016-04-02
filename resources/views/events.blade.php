@@ -89,9 +89,9 @@
 									<div class="col s6">
 										<label for="event-end-at">Hora de Finalizacion</label>
 										<div id="event-end-at">
-											<div class="row">
-												<div class="col s1"><i class="material-icons prefix">alarm</i></div>
-												<div class="col s2 input-field">
+											<div class="row dv-time">
+												<div class="col s1"><i class="material-icons">alarm</i></div>
+												<div class="col s3 offset-s1">
 													<select name="end_at_h">
 														<option value="00" selected="selected">00</option>
 														<option value="01">01</option>
@@ -119,8 +119,8 @@
 														<option value="23">23</option>
 													</select>
 												</div>
-												<div class="col s1"><p>:</p></div>
-												<div class="col s2 input-field">
+												<div class="col s1"><p>	:</p></div>
+												<div class="col s3 input-field">
 													<select name="end_at_m">
 														<option value="00" selected="selected">00</option>
 														<option value="15">15</option>

@@ -96,4 +96,8 @@ table {
 	margin:15px 0;
 }
 
+.dv-time p {
+	font-size: 20px;
+}
+
 .input-field .prefix.active { color:black; }
