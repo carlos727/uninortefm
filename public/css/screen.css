@@ -23,8 +23,6 @@ table {
 	width:95%;
 }
 
-/*#btnedt { background-color:#ffcd00; }*/
-
 #logo {
 	height:100%;
 	line-height:1;
@@ -33,7 +31,17 @@ table {
 
 #btndlt { background-color:#cb333b; }
 
+#btndlt:hover {
+	background-color:#ffcd00;
+	color:black;
+}
+
 #lunes, #martes, #miercoles, #jueves, #viernes, #sabado, #domingo {	margin-top: 45px; }
+
+#del-cont p {
+	margin-bottom:0;
+	margin-top:0;
+}
 
 .row .col{ padding:0; }
 
