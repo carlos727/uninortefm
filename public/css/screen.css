@@ -96,8 +96,13 @@ table {
 	margin:15px 0;
 }
 
+.dv-time .material-icons {
+	font-size:40px;
+}
+
 .dv-time p {
 	font-size: 20px;
+	margin-top:6px;
 }
 
 .dv-time select {

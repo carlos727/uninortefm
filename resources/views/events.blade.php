@@ -72,7 +72,7 @@
 														<option value="23">23</option>
 													</select>
 												</div>
-												<div class="col s1"><p>  :</p></div>
+												<div class="col s1 offset-s1"><p>:</p></div>
 												<div class="col s3">
 													<select name="start_at_m">
 														<option value="00" selected="selected">00</option>
@@ -119,7 +119,7 @@
 														<option value="23">23</option>
 													</select>
 												</div>
-												<div class="col s1"><p>  :</p></div>
+												<div class="col s1 offset-s1"><p>:</p></div>
 												<div class="col s3 dv-time">
 													<select name="end_at_m">
 														<option value="00" selected="selected">00</option>
