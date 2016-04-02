@@ -100,4 +100,8 @@ table {
 	font-size: 20px;
 }
 
+.dv-time select {
+	display: block;
+}
+
 .input-field .prefix.active { color:black; }
