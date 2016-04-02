@@ -227,7 +227,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->start_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="start_at" type="time" class="hide" value=" ">
@@ -264,7 +264,7 @@
 																				'21' => '21',
 																				'22' => '22',
 																				'23' => '23'
-																			], substr($event->start_at,0,2) ) }}
+																			], substr($event->end_at,0,2) ) }}
 																		</div>
 																		<div class="col s1 offset-s1"><p>:</p></div>
 																		<div class="col s3">
@@ -274,7 +274,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->end_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="end_at" type="time" class="hide" value=" ">
@@ -537,7 +537,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->start_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="start_at" type="time" class="hide" value=" ">
@@ -574,7 +574,7 @@
 																				'21' => '21',
 																				'22' => '22',
 																				'23' => '23'
-																			], substr($event->start_at,0,2) ) }}
+																			], substr($event->end_at,0,2) ) }}
 																		</div>
 																		<div class="col s1 offset-s1"><p>:</p></div>
 																		<div class="col s3">
@@ -584,7 +584,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->end_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="end_at" type="time" class="hide" value=" ">
@@ -847,7 +847,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->start_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="start_at" type="time" class="hide" value=" ">
@@ -884,7 +884,7 @@
 																				'21' => '21',
 																				'22' => '22',
 																				'23' => '23'
-																			], substr($event->start_at,0,2) ) }}
+																			], substr($event->end_at,0,2) ) }}
 																		</div>
 																		<div class="col s1 offset-s1"><p>:</p></div>
 																		<div class="col s3">
@@ -894,7 +894,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->end_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="end_at" type="time" class="hide" value=" ">
@@ -1157,7 +1157,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->start_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="start_at" type="time" class="hide" value=" ">
@@ -1194,7 +1194,7 @@
 																				'21' => '21',
 																				'22' => '22',
 																				'23' => '23'
-																			], substr($event->start_at,0,2) ) }}
+																			], substr($event->end_at,0,2) ) }}
 																		</div>
 																		<div class="col s1 offset-s1"><p>:</p></div>
 																		<div class="col s3">
@@ -1204,7 +1204,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->end_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="end_at" type="time" class="hide" value=" ">
@@ -1467,7 +1467,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->start_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="start_at" type="time" class="hide" value=" ">
@@ -1504,7 +1504,7 @@
 																				'21' => '21',
 																				'22' => '22',
 																				'23' => '23'
-																			], substr($event->start_at,0,2) ) }}
+																			], substr($event->end_at,0,2) ) }}
 																		</div>
 																		<div class="col s1 offset-s1"><p>:</p></div>
 																		<div class="col s3">
@@ -1514,7 +1514,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->end_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="end_at" type="time" class="hide" value=" ">
@@ -1777,7 +1777,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->start_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="start_at" type="time" class="hide" value=" ">
@@ -1814,7 +1814,7 @@
 																				'21' => '21',
 																				'22' => '22',
 																				'23' => '23'
-																			], substr($event->start_at,0,2) ) }}
+																			], substr($event->end_at,0,2) ) }}
 																		</div>
 																		<div class="col s1 offset-s1"><p>:</p></div>
 																		<div class="col s3">
@@ -1824,7 +1824,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->endat,3) ) }}
 																		</div>
 																	</div>
 																	<input name="end_at" type="time" class="hide" value=" ">
@@ -2087,7 +2087,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->start_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="start_at" type="time" class="hide" value=" ">
@@ -2124,7 +2124,7 @@
 																				'21' => '21',
 																				'22' => '22',
 																				'23' => '23'
-																			], substr($event->start_at,0,2) ) }}
+																			], substr($event->end_at,0,2) ) }}
 																		</div>
 																		<div class="col s1 offset-s1"><p>:</p></div>
 																		<div class="col s3">
@@ -2134,7 +2134,7 @@
 																				'30' => '30',
 																				'45' => '45',
 																				'59' => '59'
-																			], substr($event->start_at,3,2) ) }}
+																			], substr($event->end_at,3) ) }}
 																		</div>
 																	</div>
 																	<input name="end_at" type="time" class="hide" value=" ">
