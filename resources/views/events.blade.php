@@ -4,7 +4,7 @@
 
 	<header>
 		<div class="row">
-			<h2>Gestor de Contenidos Uninorte FM</h2>
+			<h2 class="center">Gestor de Contenidos Uninorte FM</h2>
 			<div class="divider"></div>
 		</div>
 	</header>
@@ -130,7 +130,7 @@
 										<form action="{{ url('event/'.$event->id) }}" method="POST" style="display:inline-block">
 											{!! csrf_field() !!}
 											{!! method_field('DELETE') !!}
-											<button type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
+											<button id="btndlt" type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
 										</form>
 									</td>
 								</tr>
@@ -248,7 +248,7 @@
 										<form action="{{ url('event/'.$event->id) }}" method="POST" style="display:inline-block">
 											{!! csrf_field() !!}
 											{!! method_field('DELETE') !!}
-											<button type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
+											<button id="btndlt" type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
 										</form>
 									</td>
 								</tr>
@@ -366,7 +366,7 @@
 										<form action="{{ url('event/'.$event->id) }}" method="POST" style="display:inline-block">
 											{!! csrf_field() !!}
 											{!! method_field('DELETE') !!}
-											<button type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
+											<button id="btndlt" type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
 										</form>
 									</td>
 								</tr>
@@ -484,7 +484,7 @@
 										<form action="{{ url('event/'.$event->id) }}" method="POST" style="display:inline-block">
 											{!! csrf_field() !!}
 											{!! method_field('DELETE') !!}
-											<button type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
+											<button id="btndlt" type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
 										</form>
 									</td>
 								</tr>
@@ -602,7 +602,7 @@
 										<form action="{{ url('event/'.$event->id) }}" method="POST" style="display:inline-block">
 											{!! csrf_field() !!}
 											{!! method_field('DELETE') !!}
-											<button type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
+											<button id="btndlt" type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
 										</form>
 									</td>
 								</tr>
@@ -720,7 +720,7 @@
 										<form action="{{ url('event/'.$event->id) }}" method="POST" style="display:inline-block">
 											{!! csrf_field() !!}
 											{!! method_field('DELETE') !!}
-											<button type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
+											<button id="btndlt" type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
 										</form>
 									</td>
 								</tr>
@@ -838,7 +838,7 @@
 										<form action="{{ url('event/'.$event->id) }}" method="POST" style="display:inline-block">
 											{!! csrf_field() !!}
 											{!! method_field('DELETE') !!}
-											<button type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
+											<button id="btndlt" type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
 										</form>
 									</td>
 								</tr>

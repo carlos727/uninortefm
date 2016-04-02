@@ -1,18 +1,61 @@
 header {
-	border-bottom: 1px solid #CCC; }
-	header .row {
+	background-color:white;
+	border-bottom: 1px solid #CCC;
+	color:black;
+}
+header .row {
 	margin-bottom: 0;
 }
 
 section {
-	padding-left: 30px !important;
+	padding-left: 0;
 }
 
-table {	margin-top: 40px; }
+h2 {
+    background-color: #cb333b;
+    color: white;
+    margin: 0;
+    padding: 1.78rem 0 1.424rem 0;
+}
+
+table {
+	margin: 40px 0 0 20px;
+	width:95%;
+}
+
+/*#btnedt { background-color:#ffcd00; }*/
+
+#logo {
+	height:100%;
+	line-height:1;
+	padding:0;
+}
+
+#btndlt { background-color:#cb333b; }
 
 #lunes, #martes, #miercoles, #jueves, #viernes, #sabado, #domingo {	margin-top: 45px; }
 
-.side-nav a { height: 40px; }
+.row .col{ padding:0; }
+
+.btn { background-color:black; }
+
+.btn:hover {
+	background-color:#ffcd00;
+	color:black;
+}
+
+.tabs .tab a {
+    color: #cb333b;
+}
+
+.side-nav {
+	background-color:#cb333b;
+    color:white;
+}
+
+.side-nav a {
+	height: 40px;
+}
 
 .side-nav li { border-bottom: 1px solid #CCC; }
 
@@ -40,3 +83,5 @@ table {	margin-top: 40px; }
 	padding:15px 0;
 	margin:15px 0;
 }
+
+.input-field .prefix.active { color:black; }
