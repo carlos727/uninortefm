@@ -139,6 +139,12 @@ Route::group(['middleware' => 'web'], function () {
 	Route::put('/event/{event}', function ($id, Request $request) {
 		$event = Event::find($id);
 
+		$start_at = $request->start_at_h.":".$request->start_at_m;
+		$end_at = $request->end_at_h.":".$request->end_at_m;
+
+		$request ->merge(['start_at' => $start_at]);
+		$request->merge(['end_at' => $end_at]);
+
 		$validator = Validator::make($request->all(), [
 			'name' => 'required',
 			'start_at' => ['required', 'regex:^(([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)$^', 'before:end_at'],
