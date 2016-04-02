@@ -127,11 +127,22 @@
 												</div>
 											</div>
 										</div>
-										<form action="{{ url('event/'.$event->id) }}" method="POST" style="display:inline-block">
-											{!! csrf_field() !!}
-											{!! method_field('DELETE') !!}
-											<button id="btndlt" type="submit" class="btn tooltipped" href="#" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
-										</form>
+										<a id="btndlt"  class="waves-effect waves-light btn modal-trigger tooltipped" href="#model{{ $event->id }}" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></a>
+										<div id="model{{ $event->id }}" class="modal">
+											<div class="modal-content">
+												<h4>Eliminar Contenido</h4>
+												<div class="row">
+													<div class="col s4"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
+													<div class="col s8 valign-wrapper"><p>¿Estas seguro de borrar este contenido?</p></div>
+												</div>
+												<form action="{{ url('event/'.$event->id) }}" method="POST">
+													{!! csrf_field() !!}
+													{!! method_field('DELETE') !!}
+													<button type="submit" class="btn modal-action modal-close waves-effect waves-green">Eliminar</button>
+												</form>
+											</div>
+										</div>
+
 									</td>
 								</tr>
 							@endif

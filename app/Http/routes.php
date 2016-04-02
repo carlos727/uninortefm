@@ -16,10 +16,20 @@ Route::group(['middleware' => 'web'], function () {
 		]);
 	});
 
+	/*
+	* Show all events in json format
+	*/
 	Route::get('/json', function(){
-		return Event::all()->toJson();
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at')
+					->get();
+
+		return Response::json($events);
 	});
 
+	/*
+	* Show events per day in json format
+	*/
 	Route::get('/json/lunes', function(){
 		$events = DB::table('events')
 					->select('id', 'name', 'start_at', 'end_at')
