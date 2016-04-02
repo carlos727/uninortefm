@@ -83,8 +83,8 @@
 									</div>
 									<div class="col s6">
 										<label for="event-end-at">Hora de Finalizacion</label>
-										<div id="event-end-at" class="input-field">
-											<i class="material-icons prefix">alarm</i>
+										<div id="event-end-at">
+											
 											<div class="row">
 												{{ Form::select('end_at_h', [
 													'00' => '00',
