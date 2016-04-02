@@ -83,7 +83,7 @@
 													</select>
 												</div>
 											</div>
-											<input name="start_at" type="time" class="hide" value="">
+											<input name="start_at" type="time" class="hide" value=" ">
 										</div>
 									</div>
 									<div class="col s6">
@@ -130,7 +130,7 @@
 													</select>
 												</div>
 											</div>
-											<input name="end_at" type="time" class="hide" value="">
+											<input name="end_at" type="time" class="hide" value=" ">
 										</div>
 									</div>
 								</div>
