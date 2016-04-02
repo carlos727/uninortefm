@@ -84,8 +84,6 @@
 									<div class="col s6">
 										<label for="event-end-at">Hora de Finalizacion</label>
 										<div id="event-end-at">
-											
-											<div class="row">
 												{{ Form::select('end_at_h', [
 													'00' => '00',
 													'01' => '01',
@@ -119,7 +117,6 @@
 													'45' => '45',
 													'59' => '59'
 												], '00') }}
-											</div>
 											<input name="end_at" type="time" class="hide" value="">
 										</div>
 									</div>
