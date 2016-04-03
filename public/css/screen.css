@@ -36,7 +36,7 @@ table {
 	color:black;
 }
 
-#lunes, #martes, #miercoles, #jueves, #viernes, #sabado, #domingo {	margin-top: 45px; }
+div[id^="tab"] { margin-top: 45px; }
 
 #del-cont p {
 	margin-bottom:0;
