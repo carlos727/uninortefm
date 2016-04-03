@@ -147,7 +147,7 @@
 					<table class="striped">
 						<?php $a=0 ?>
 						@foreach ($events as $event)
-							@if ($event->day == 1)
+							@if ($event->day == $i)
 								<?php $a++; ?>
 							@endif
 						@endforeach
@@ -165,7 +165,7 @@
 
 						<tbody>
 							@foreach ($events as $event)
-								@if ($event->day == 1)
+								@if ($event->day == $i)
 									<tr>
 										<td><div>{{ $event->name }}</div></td>
 										<td><div>{{ $event->start_at }}</div></td>
