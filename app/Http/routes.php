@@ -24,11 +24,8 @@ Route::group(['middleware' => 'web'], function () {
 		$day = 1;
 
 		return view('events', [
-			'events' => $events
-		], [
+			'events' => $events,
 			'class' => $class
-		], [
-			'd' => $day
 		]);
 	});
 
