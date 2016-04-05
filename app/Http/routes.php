@@ -12,8 +12,8 @@ Route::group(['middleware' => 'web'], function () {
 		$events = Event::orderBy('start_at', 'asc')->get();
 
 		$class = [
-			'lunes'		=>	'active',
-			'martes'	=>	'',
+			'lunes'		=>	'',
+			'martes'	=>	'active',
 			'miercoles'	=>	'',
 			'jueves'	=>	'',
 			'viernes'	=>	'',
@@ -190,17 +190,17 @@ Route::group(['middleware' => 'web'], function () {
 			'domingo'	=> ''
 		];
 
-		if ($request->day == 1) {
+		if ($event->day == 1) {
 			$class['lunes'] = 'active';
-		} elseif ($request->day == 2) {
+		} elseif ($event->day == 2) {
 			$class['martes'] = 'active';
-		} elseif ($request->day == 3) {
+		} elseif ($event->day == 3) {
 			$class['miercoles'] = 'active';
-		} elseif ($request->day == 4) {
+		} elseif ($event->day == 4) {
 			$class['jueves'] = 'active';
-		} elseif ($request->day == 5) {
+		} elseif ($event->day == 5) {
 			$class['viernes'] = 'active';
-		} elseif ($request->day == 6) {
+		} elseif ($event->day == 6) {
 			$class['sabado'] = 'active';
 		} else {
 			$class['domingo'] = 'active';
