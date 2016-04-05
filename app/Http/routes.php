@@ -21,12 +21,14 @@ Route::group(['middleware' => 'web'], function () {
 			'domingo'	=> ''
 		];
 
+		$day = 1;
+
 		return view('events', [
 			'events' => $events
 		], [
 			'class' => $class
 		], [
-			'day' => 1
+			'day' => $day
 		]);
 	});
 
