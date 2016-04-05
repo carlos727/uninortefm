@@ -8,18 +8,8 @@ Route::group(['middleware' => 'web'], function () {
 	/*
 	* Show Event Dashboard
 	*/
-	Route::get('/', function () {
+	Route::get('/', function ($class) {
 		$events = Event::orderBy('start_at', 'asc')->get();
-
-		$class = [
-			'lunes'		=>	'',
-			'martes'	=>	'active',
-			'miercoles'	=>	'',
-			'jueves'	=>	'',
-			'viernes'	=>	'',
-			'sabado'	=>	'',
-			'domingo'	=> ''
-		];
 
 		return view('events', [
 			'events' => $events
@@ -108,7 +98,7 @@ Route::group(['middleware' => 'web'], function () {
 	/*
 	* Add New Event
 	*/
-	Route::post('/event', function (Request $request) {
+	Route::post('/event', function ($class, Request $request) {
 
 		$start_at = $request->start_at_h.":".$request->start_at_m;
 		$end_at = $request->end_at_h.":".$request->end_at_m;
@@ -150,10 +140,7 @@ Route::group(['middleware' => 'web'], function () {
 		}
 
 		if ($validator->fails()) {
-			$events = Event::orderBy('start_at', 'asc')->get();
-			return view('events', [
-						'events' => $events
-					], [
+			return redirect('/', [
 						'class' => $class
 					])
 				->withInput()
@@ -167,11 +154,7 @@ Route::group(['middleware' => 'web'], function () {
 		$event->day = $request->day;
 		$event->save();
 
-		$events = Event::orderBy('start_at', 'asc')->get();
-
-		return view('events', [
-			'events' => $events
-		], [
+		return redirect('/', [
 			'class' => $class
 		]);
 	});
@@ -179,7 +162,7 @@ Route::group(['middleware' => 'web'], function () {
 	/*
 	* Delete Event
 	*/
-	Route::delete('/event/{event}', function (Event $event) {
+	Route::delete('/event/{event}', function ($class, Event $event) {
 		$class = [
 			'lunes'		=>	'',
 			'martes'	=>	'',
@@ -208,16 +191,12 @@ Route::group(['middleware' => 'web'], function () {
 
 		$event->delete();
 
-		$events = Event::orderBy('start_at', 'asc')->get();
-
-		return view('events', [
-			'events' => $events
-		], [
+		return redirect('/', [
 			'class' => $class
 		]);
 	});
 
-	Route::put('/event/{event}', function ($id, Request $request) {
+	Route::put('/event/{event}', function ($id, $class, Request $request) {
 		$event = Event::find($id);
 
 		$start_at = $request->start_at_h.":".$request->start_at_m;
@@ -261,9 +240,7 @@ Route::group(['middleware' => 'web'], function () {
 
 		if ($validator->fails()) {
 			$events = Event::orderBy('start_at', 'asc')->get();
-			return view('events', [
-						'events' => $events
-					], [
+			return redirect('/', [
 						'class' => $class
 					])
 				->withInput()
@@ -276,11 +253,7 @@ Route::group(['middleware' => 'web'], function () {
 		$event->day = $request->day;
 		$event->save();
 
-		$events = Event::orderBy('start_at', 'asc')->get();
-
-		return view('events', [
-			'events' => $events
-		], [
+		return redirect('/', [
 			'class' => $class
 		]);
 	});
