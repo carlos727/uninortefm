@@ -12,13 +12,13 @@
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s1"><a href="#tab1">Lunes</a></li>
-				<li class="tab col s1"><a href="#tab2">Martes</a></li>
-				<li class="tab col s1"><a href="#tab3">Miercoles</a></li>
-				<li class="tab col s1"><a href="#tab4">Jueves</a></li>
-				<li class="tab col s1"><a href="#tab5">Viernes</a></li>
-				<li class="tab col s1"><a href="#tab6">Sabado</a></li>
-				<li class="tab col s1"><a href="#tab7">Domingo</a></li>
+				<li class="tab col s1"><a class="{{{ $class['lunes'] }}}" href="#tab1">Lunes</a></li>
+				<li class="tab col s1"><a class="{{{ $class['martes'] }}}" href="#tab2">Martes</a></li>
+				<li class="tab col s1"><a class="{{{ $class['miercoles'] }}}" href="#tab3">Miercoles</a></li>
+				<li class="tab col s1"><a class="{{{ $class['jueves'] }}}" href="#tab4">Jueves</a></li>
+				<li class="tab col s1"><a class="{{{ $class['viernes'] }}}" href="#tab5">Viernes</a></li>
+				<li class="tab col s1"><a class="{{{ $class['sabado'] }}}" href="#tab6">Sabado</a></li>
+				<li class="tab col s1"><a class="{{{ $class['domingo'] }}}" href="#tab7">Domingo</a></li>
 			</ul>
 			<div class="divider"></div>
 		</div>
