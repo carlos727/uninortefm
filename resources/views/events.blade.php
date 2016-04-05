@@ -141,7 +141,6 @@
 							</div>
 						</div>
 					</div>
-					{{{ $d = $day }}}
 					@if ( $i == $d )
 						@include('common.errors')
 					@endif

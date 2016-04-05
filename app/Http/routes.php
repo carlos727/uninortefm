@@ -28,7 +28,7 @@ Route::group(['middleware' => 'web'], function () {
 		], [
 			'class' => $class
 		], [
-			'day' => $day
+			'd' => $day
 		]);
 	});
 
