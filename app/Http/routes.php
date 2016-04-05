@@ -152,10 +152,8 @@ Route::group(['middleware' => 'web'], function () {
 		if ($validator->fails()) {
 			$events = Event::orderBy('start_at', 'asc')->get();
 			return view('events', [
-					'events' => $events
-				], [
-					'class' => $class
-				])
+						'class' => $class
+					])
 				->withInput()
 				->withErrors($validator->errors());
 		}
@@ -178,7 +176,7 @@ Route::group(['middleware' => 'web'], function () {
 	/*
 	* Delete Event
 	*/
-	Route::delete('/event/{event}', function (Event $event) {
+	Route::delete('/event/{event}', function ($id) {
 		$class = [
 			'lunes'		=>	'',
 			'martes'	=>	'',
@@ -189,23 +187,23 @@ Route::group(['middleware' => 'web'], function () {
 			'domingo'	=> ''
 		];
 
-		if ($event->day == 1) {
+		if ($id == 1) {
 			$class['lunes'] = 'active';
-		} elseif ($event->day == 2) {
+		} elseif ($id == 2) {
 			$class['martes'] = 'active';
-		} elseif ($event->day == 3) {
+		} elseif ($id == 3) {
 			$class['miercoles'] = 'active';
-		} elseif ($event->day == 4) {
+		} elseif ($id == 4) {
 			$class['jueves'] = 'active';
-		} elseif ($event->day == 5) {
+		} elseif ($id == 5) {
 			$class['viernes'] = 'active';
-		} elseif ($event->day == 6) {
+		} elseif ($id == 6) {
 			$class['sabado'] = 'active';
 		} else {
 			$class['domingo'] = 'active';
 		}
 
-		$event->delete();
+		Event::findOrFail($id)->delete();
 
 		$events = Event::orderBy('start_at', 'asc')->get();
 		return view('events', [
