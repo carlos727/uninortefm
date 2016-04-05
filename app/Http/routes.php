@@ -13,15 +13,14 @@ Route::group(['middleware' => 'web'], function () {
 
 		$class = [
 			'lunes'		=>	'active',
-			'martes'	=>	'',
-			'miercoles'	=>	'',
-			'jueves'	=>	'',
-			'viernes'	=>	'',
-			'sabado'	=>	'',
-			'domingo'	=> ''
+			'martes'	=>	' ',
+			'miercoles'	=>	' ',
+			'jueves'	=>	' ',
+			'viernes'	=>	' ',
+			'sabado'	=>	' ',
+			'domingo'	=> 	' ',
+			'day'		=>	0
 		];
-
-		$day = 1;
 
 		return view('events', [
 			'events' => $events,
@@ -125,31 +124,37 @@ Route::group(['middleware' => 'web'], function () {
 		]);
 
 		$class = [
-			'lunes'		=>	'',
-			'martes'	=>	'',
-			'miercoles'	=>	'',
-			'jueves'	=>	'',
-			'viernes'	=>	'',
-			'sabado'	=>	'',
-			'domingo'	=> ''
+			'lunes'		=>	' ',
+			'martes'	=>	' ',
+			'miercoles'	=>	' ',
+			'jueves'	=>	' ',
+			'viernes'	=>	' ',
+			'sabado'	=>	' ',
+			'domingo'	=>	' ',
+			'day'		=>	0
 		];
 
-		$day =$request->day;
-
-		if ($day == 1) {
+		if ($request->day == 1) {
 			$class['lunes'] = 'active';
-		} elseif ($day == 2) {
+			$class['day'] = 1;
+		} elseif ($request->day == 2) {
 			$class['martes'] = 'active';
-		} elseif ($day == 3) {
+			$class['day'] = 2;
+		} elseif ($request->day == 3) {
 			$class['miercoles'] = 'active';
-		} elseif ($day == 4) {
+			$class['day'] = 3;
+		} elseif ($request->day == 4) {
 			$class['jueves'] = 'active';
-		} elseif ($day == 5) {
+			$class['day'] = 4;
+		} elseif ($request->day == 5) {
 			$class['viernes'] = 'active';
-		} elseif ($day == 6) {
+			$class['day'] = 5;
+		} elseif ($request->day == 6) {
 			$class['sabado'] = 'active';
+			$class['day'] = 6;
 		} else {
 			$class['domingo'] = 'active';
+			$class['day'] = 7;
 		}
 
 		if ($validator->fails()) {
