@@ -123,21 +123,6 @@ Route::group(['middleware' => 'web'], function () {
 			'day' => 'required|integer|between:1,7'
 		]);
 
-		if ($validator->fails()) {
-			return redirect('/')
-				->withInput()
-				->withErrors($validator->errors());
-		}
-
-		$event = new Event;
-		$event->name = $request->name;
-		$event->start_at = $request->start_at;
-		$event->end_at = $request->end_at;
-		$event->day = $request->day;
-		$event->save();
-
-		$events = Event::orderBy('start_at', 'asc')->get();
-
 		$class = [
 			'lunes'		=>	'',
 			'martes'	=>	'',
@@ -164,6 +149,28 @@ Route::group(['middleware' => 'web'], function () {
 			$class['domingo'] = 'active';
 		}
 
+		if ($validator->fails()) {
+			$events = Event::orderBy('start_at', 'asc')->get();
+
+			return view('events', [
+					'events' => $events
+				], [
+					'class' => $class
+				])
+				->withErrors($validator->errors());
+		}
+
+		$event = new Event;
+		$event->name = $request->name;
+		$event->start_at = $request->start_at;
+		$event->end_at = $request->end_at;
+		$event->day = $request->day;
+		$event->save();
+
+		$events = Event::orderBy('start_at', 'asc')->get();
+
+
+
 		return view('events', [
 					'events' => $events
 				], [
@@ -176,10 +183,7 @@ Route::group(['middleware' => 'web'], function () {
 	*/
 	Route::delete('/event/{event}', function ($id) {
 
-		$day = DB::table('events')
-					->select('day')
-					->where('id','=',$id)
-					->get();
+		$event = Event::findOrFail($id)->get();
 
 		Event::findOrFail($id)->delete();
 
@@ -195,17 +199,17 @@ Route::group(['middleware' => 'web'], function () {
 			'domingo'	=> ''
 		];
 
-		if ($day == '1') {
+		if ($event->day == 1) {
 			$class['lunes'] = 'active';
-		} elseif ($day == '2') {
+		} elseif ($event->day == 2) {
 			$class['martes'] = 'active';
-		} elseif ($day == '3') {
+		} elseif ($event->day == 3) {
 			$class['miercoles'] = 'active';
-		} elseif ($day == '4') {
+		} elseif ($event->day == 4) {
 			$class['jueves'] = 'active';
-		} elseif ($day == '5') {
+		} elseif ($event->day == 5) {
 			$class['viernes'] = 'active';
-		} elseif ($day == '6') {
+		} elseif ($event->day == 6) {
 			$class['sabado'] = 'active';
 		} else {
 			$class['domingo'] = 'active';
