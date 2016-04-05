@@ -108,7 +108,7 @@ Route::group(['middleware' => 'web'], function () {
 	/*
 	* Add New Event
 	*/
-	Route::post('/event', function ($class, Request $request) {
+	Route::post('/event', function (Request $request) {
 
 		$start_at = $request->start_at_h.":".$request->start_at_m;
 		$end_at = $request->end_at_h.":".$request->end_at_m;
@@ -172,7 +172,7 @@ Route::group(['middleware' => 'web'], function () {
 	/*
 	* Delete Event
 	*/
-	Route::delete('/event/{event}', function ($class, Event $event) {
+	Route::delete('/event/{event}', function (Event $event) {
 		$class = [
 			'lunes'		=>	'',
 			'martes'	=>	'',
@@ -206,7 +206,7 @@ Route::group(['middleware' => 'web'], function () {
 		]);
 	});
 
-	Route::put('/event/{event}', function ($id, $class, Request $request) {
+	Route::put('/event/{event}', function ($id, Request $request) {
 		$event = Event::find($id);
 
 		$start_at = $request->start_at_h.":".$request->start_at_m;
