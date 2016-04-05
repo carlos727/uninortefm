@@ -176,6 +176,8 @@ Route::group(['middleware' => 'web'], function () {
 	*/
 	Route::delete('/event/{event}', function ($id) {
 
+		$day = Event::findOrFail($id)->select('day')->get();
+
 		Event::findOrFail($id)->delete();
 
 		$events = Event::orderBy('start_at', 'asc')->get();
@@ -190,17 +192,17 @@ Route::group(['middleware' => 'web'], function () {
 			'domingo'	=> ''
 		];
 
-		if ($id === 1) {
+		if ($day === 1) {
 			$class['lunes'] = 'active';
-		} elseif ($id === 2) {
+		} elseif ($day === 2) {
 			$class['martes'] = 'active';
-		} elseif ($id === 3) {
+		} elseif ($day === 3) {
 			$class['miercoles'] = 'active';
-		} elseif ($id === 4) {
+		} elseif ($day === 4) {
 			$class['jueves'] = 'active';
-		} elseif ($id === 5) {
+		} elseif ($day === 5) {
 			$class['viernes'] = 'active';
-		} elseif ($id === 6) {
+		} elseif ($day === 6) {
 			$class['sabado'] = 'active';
 		} else {
 			$class['domingo'] = 'active';
