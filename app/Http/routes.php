@@ -123,6 +123,21 @@ Route::group(['middleware' => 'web'], function () {
 			'day' => 'required|integer|between:1,7'
 		]);
 
+		if ($validator->fails()) {
+			return redirect('/')
+				->withInput()
+				->withErrors($validator->errors());
+		}
+
+		$event = new Event;
+		$event->name = $request->name;
+		$event->start_at = $request->start_at;
+		$event->end_at = $request->end_at;
+		$event->day = $request->day;
+		$event->save();
+
+		$events = Event::orderBy('start_at', 'asc')->get();
+
 		$class = [
 			'lunes'		=>	'',
 			'martes'	=>	'',
@@ -149,23 +164,6 @@ Route::group(['middleware' => 'web'], function () {
 			$class['domingo'] = 'active';
 		}
 
-		if ($validator->fails()) {
-			$events = Event::orderBy('start_at', 'asc')->get();
-			return view('events', [
-						'class' => $class
-					])
-				->withInput()
-				->withErrors($validator->errors());
-		}
-
-		$event = new Event;
-		$event->name = $request->name;
-		$event->start_at = $request->start_at;
-		$event->end_at = $request->end_at;
-		$event->day = $request->day;
-		$event->save();
-
-		$events = Event::orderBy('start_at', 'asc')->get();
 		return view('events', [
 					'events' => $events
 				], [
@@ -177,6 +175,11 @@ Route::group(['middleware' => 'web'], function () {
 	* Delete Event
 	*/
 	Route::delete('/event/{event}', function ($id) {
+
+		Event::findOrFail($id)->delete();
+
+		$events = Event::orderBy('start_at', 'asc')->get();
+
 		$class = [
 			'lunes'		=>	'',
 			'martes'	=>	'',
@@ -203,9 +206,6 @@ Route::group(['middleware' => 'web'], function () {
 			$class['domingo'] = 'active';
 		}
 
-		Event::findOrFail($id)->delete();
-
-		$events = Event::orderBy('start_at', 'asc')->get();
 		return view('events', [
 					'events' => $events
 				], [
@@ -214,6 +214,7 @@ Route::group(['middleware' => 'web'], function () {
 	});
 
 	Route::put('/event/{event}', function ($id, Request $request) {
+
 		$event = Event::find($id);
 
 		$start_at = $request->start_at_h.":".$request->start_at_m;
@@ -228,6 +229,20 @@ Route::group(['middleware' => 'web'], function () {
 			'end_at' => ['required', 'regex:^(([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)$^'],
 			'day' => 'required|integer|between:1,7'
 		]);
+
+		if ($validator->fails()) {
+			return redirect('/')
+				->withInput()
+				->withErrors($validator->errors());
+		}
+
+		$event->name = $request->name;
+		$event->start_at = $request->start_at;
+		$event->end_at = $request->end_at;
+		$event->day = $request->day;
+		$event->save();
+
+		$events = Event::orderBy('start_at', 'asc')->get();
 
 		$class = [
 			'lunes'		=>	'',
@@ -255,22 +270,6 @@ Route::group(['middleware' => 'web'], function () {
 			$class['domingo'] = 'active';
 		}
 
-		if ($validator->fails()) {
-			$events = Event::orderBy('start_at', 'asc')->get();
-			return view('events', [
-						'class' => $class
-					])
-				->withInput()
-				->withErrors($validator->errors());
-		}
-
-		$event->name = $request->name;
-		$event->start_at = $request->start_at;
-		$event->end_at = $request->end_at;
-		$event->day = $request->day;
-		$event->save();
-
-		$events = Event::orderBy('start_at', 'asc')->get();
 		return view('events', [
 					'events' => $events
 				], [
