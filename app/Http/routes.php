@@ -8,7 +8,7 @@ Route::group(['middleware' => 'web'], function () {
 	/*
 	* Show Event Dashboard
 	*/
-	Route::get('/', function ($class) {
+	Route::get('/', function () {
 		$events = Event::orderBy('start_at', 'asc')->get();
 
 		$class = [
