@@ -25,6 +25,8 @@ Route::group(['middleware' => 'web'], function () {
 			'events' => $events
 		], [
 			'class' => $class
+		], [
+			'day' => 1
 		]);
 	});
 
@@ -133,17 +135,19 @@ Route::group(['middleware' => 'web'], function () {
 			'domingo'	=> ''
 		];
 
-		if ($request->day == 1) {
+		$day =$request->day;
+
+		if ($day == 1) {
 			$class['lunes'] = 'active';
-		} elseif ($request->day == 2) {
+		} elseif ($day == 2) {
 			$class['martes'] = 'active';
-		} elseif ($request->day == 3) {
+		} elseif ($day == 3) {
 			$class['miercoles'] = 'active';
-		} elseif ($request->day == 4) {
+		} elseif ($day == 4) {
 			$class['jueves'] = 'active';
-		} elseif ($request->day == 5) {
+		} elseif ($day == 5) {
 			$class['viernes'] = 'active';
-		} elseif ($request->day == 6) {
+		} elseif ($day == 6) {
 			$class['sabado'] = 'active';
 		} else {
 			$class['domingo'] = 'active';
@@ -156,6 +160,8 @@ Route::group(['middleware' => 'web'], function () {
 					'events' => $events
 				], [
 					'class' => $class
+				], [
+					'day' => $day
 				])
 				->withErrors($validator->errors());
 		}
@@ -175,6 +181,8 @@ Route::group(['middleware' => 'web'], function () {
 					'events' => $events
 				], [
 					'class' => $class
+				], [
+					'day' => $day
 				]);
 	});
 
@@ -183,7 +191,10 @@ Route::group(['middleware' => 'web'], function () {
 	*/
 	Route::delete('/event/{event}', function ($id) {
 
-		$event = Event::findOrFail($id)->get();
+		$day = DB::table('events')
+					->select('day')
+					->where('id','=', $id)
+					->get();
 
 		Event::findOrFail($id)->delete();
 
@@ -199,17 +210,17 @@ Route::group(['middleware' => 'web'], function () {
 			'domingo'	=> ''
 		];
 
-		if ($event->day == 1) {
+		if ($day == 1) {
 			$class['lunes'] = 'active';
-		} elseif ($event->day == 2) {
+		} elseif ($day == 2) {
 			$class['martes'] = 'active';
-		} elseif ($event->day == 3) {
+		} elseif ($day == 3) {
 			$class['miercoles'] = 'active';
-		} elseif ($event->day == 4) {
+		} elseif ($day == 4) {
 			$class['jueves'] = 'active';
-		} elseif ($event->day == 5) {
+		} elseif ($day == 5) {
 			$class['viernes'] = 'active';
-		} elseif ($event->day == 6) {
+		} elseif ($day == 6) {
 			$class['sabado'] = 'active';
 		} else {
 			$class['domingo'] = 'active';
@@ -219,6 +230,8 @@ Route::group(['middleware' => 'web'], function () {
 					'events' => $events
 				], [
 					'class' => $class
+				], [
+					'day' => $day
 				]);
 	});
 
@@ -239,9 +252,44 @@ Route::group(['middleware' => 'web'], function () {
 			'day' => 'required|integer|between:1,7'
 		]);
 
+		$class = [
+			'lunes'		=>	'',
+			'martes'	=>	'',
+			'miercoles'	=>	'',
+			'jueves'	=>	'',
+			'viernes'	=>	'',
+			'sabado'	=>	'',
+			'domingo'	=> ''
+		];
+
+		$day =$request->day;
+
+		if ($day == 1) {
+			$class['lunes'] = 'active';
+		} elseif ($day == 2) {
+			$class['martes'] = 'active';
+		} elseif ($day == 3) {
+			$class['miercoles'] = 'active';
+		} elseif ($day == 4) {
+			$class['jueves'] = 'active';
+		} elseif ($day == 5) {
+			$class['viernes'] = 'active';
+		} elseif ($day == 6) {
+			$class['sabado'] = 'active';
+		} else {
+			$class['domingo'] = 'active';
+		}
+
 		if ($validator->fails()) {
-			return redirect('/')
-				->withInput()
+			$events = Event::orderBy('start_at', 'asc')->get();
+
+			return view('events', [
+					'events' => $events
+				], [
+					'class' => $class
+				], [
+					'day' => $day
+				])
 				->withErrors($validator->errors());
 		}
 
@@ -253,36 +301,12 @@ Route::group(['middleware' => 'web'], function () {
 
 		$events = Event::orderBy('start_at', 'asc')->get();
 
-		$class = [
-			'lunes'		=>	'',
-			'martes'	=>	'',
-			'miercoles'	=>	'',
-			'jueves'	=>	'',
-			'viernes'	=>	'',
-			'sabado'	=>	'',
-			'domingo'	=> ''
-		];
-
-		if ($request->day == 1) {
-			$class['lunes'] = 'active';
-		} elseif ($request->day == 2) {
-			$class['martes'] = 'active';
-		} elseif ($request->day == 3) {
-			$class['miercoles'] = 'active';
-		} elseif ($request->day == 4) {
-			$class['jueves'] = 'active';
-		} elseif ($request->day == 5) {
-			$class['viernes'] = 'active';
-		} elseif ($request->day == 6) {
-			$class['sabado'] = 'active';
-		} else {
-			$class['domingo'] = 'active';
-		}
-
 		return view('events', [
 					'events' => $events
 				], [
 					'class' => $class
+				], [
+					'day' => $day
 				]);
 	});
 

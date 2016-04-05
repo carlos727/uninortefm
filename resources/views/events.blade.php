@@ -141,7 +141,9 @@
 							</div>
 						</div>
 					</div>
-					@include('common.errors')
+					@if ( $i == $day )
+						@include('common.errors')
+					@endif
 				</div>
 				@if (count($events) > 0)
 					<table class="striped">
