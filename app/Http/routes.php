@@ -11,6 +11,16 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/', function ($class) {
 		$events = Event::orderBy('start_at', 'asc')->get();
 
+		$class = [
+			'lunes'		=>	'active',
+			'martes'	=>	'',
+			'miercoles'	=>	'',
+			'jueves'	=>	'',
+			'viernes'	=>	'',
+			'sabado'	=>	'',
+			'domingo'	=> ''
+		];
+
 		return view('events', [
 			'events' => $events
 		], [
