@@ -190,17 +190,17 @@ Route::group(['middleware' => 'web'], function () {
 			'domingo'	=> ''
 		];
 
-		if ($id == 1) {
+		if ($id === 1) {
 			$class['lunes'] = 'active';
-		} elseif ($id == 2) {
+		} elseif ($id === 2) {
 			$class['martes'] = 'active';
-		} elseif ($id == 3) {
+		} elseif ($id === 3) {
 			$class['miercoles'] = 'active';
-		} elseif ($id == 4) {
+		} elseif ($id === 4) {
 			$class['jueves'] = 'active';
-		} elseif ($id == 5) {
+		} elseif ($id === 5) {
 			$class['viernes'] = 'active';
-		} elseif ($id == 6) {
+		} elseif ($id === 6) {
 			$class['sabado'] = 'active';
 		} else {
 			$class['domingo'] = 'active';
