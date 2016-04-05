@@ -150,7 +150,7 @@ Route::group(['middleware' => 'web'], function () {
 		}
 
 		if ($validator->fails()) {
-			return redirect('/', [
+			return view('events', [
 						'class' => $class
 					])
 				->withInput()
@@ -164,7 +164,7 @@ Route::group(['middleware' => 'web'], function () {
 		$event->day = $request->day;
 		$event->save();
 
-		return redirect('/', [
+		return view('events', [
 			'class' => $class
 		]);
 	});
@@ -201,7 +201,7 @@ Route::group(['middleware' => 'web'], function () {
 
 		$event->delete();
 
-		return redirect('/', [
+		return view('events', [
 			'class' => $class
 		]);
 	});
@@ -250,7 +250,7 @@ Route::group(['middleware' => 'web'], function () {
 
 		if ($validator->fails()) {
 			$events = Event::orderBy('start_at', 'asc')->get();
-			return redirect('/', [
+			return view('events', [
 						'class' => $class
 					])
 				->withInput()
@@ -263,7 +263,7 @@ Route::group(['middleware' => 'web'], function () {
 		$event->day = $request->day;
 		$event->save();
 
-		return redirect('/', [
+		return view('events', [
 			'class' => $class
 		]);
 	});
