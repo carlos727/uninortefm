@@ -156,11 +156,8 @@ Route::group(['middleware' => 'web'], function () {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
 			return view('events', [
-					'events' => $events
-				], [
+					'events' => $events,
 					'class' => $class
-				], [
-					'day' => $day
 				])
 				->withErrors($validator->errors());
 		}
@@ -177,11 +174,8 @@ Route::group(['middleware' => 'web'], function () {
 
 
 		return view('events', [
-					'events' => $events
-				], [
+					'events' => $events,
 					'class' => $class
-				], [
-					'day' => $day
 				]);
 	});
 
@@ -226,11 +220,8 @@ Route::group(['middleware' => 'web'], function () {
 		}
 
 		return view('events', [
-					'events' => $events
-				], [
+					'events' => $events,
 					'class' => $class
-				], [
-					'day' => $day
 				]);
 	});
 
@@ -283,11 +274,8 @@ Route::group(['middleware' => 'web'], function () {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
 			return view('events', [
-					'events' => $events
-				], [
+					'events' => $events,
 					'class' => $class
-				], [
-					'day' => $day
 				])
 				->withErrors($validator->errors());
 		}
@@ -301,11 +289,8 @@ Route::group(['middleware' => 'web'], function () {
 		$events = Event::orderBy('start_at', 'asc')->get();
 
 		return view('events', [
-					'events' => $events
-				], [
+					'events' => $events,
 					'class' => $class
-				], [
-					'day' => $day
 				]);
 	});
 
