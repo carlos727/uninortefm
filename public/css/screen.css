@@ -43,6 +43,8 @@ div[id^="tab"] { margin-top: 45px; }
 	margin-top:0;
 }
 
+#headuser { margin-bottom:40px; }
+
 .row .col{ padding:0; }
 
 .btn {
@@ -70,9 +72,10 @@ div[id^="tab"] { margin-top: 45px; }
 
 .side-nav li { border-bottom: 1px solid #CCC; }
 
-.side-nav li p {
+.side-nav .nav-link {
+	color:white !important;
+	display: inline-block !important;
 	font-size: 18px;
-	display: inline-block;
 	line-height: 1;
 	margin: 0;
 }
@@ -105,8 +108,11 @@ div[id^="tab"] { margin-top: 45px; }
 	margin-top:6px;
 }
 
-.dv-time select {
+.dv-time select, .dv-rol select {
+	border-color:#CCC;
 	display: block;
 }
 
 .input-field .prefix.active { color:black; }
+
+.activeli { background-color:black; }

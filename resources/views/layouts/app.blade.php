@@ -34,14 +34,13 @@
 							</div>
 						</div>
 					</header>
-					<li class="">
+					<li class="{{ $class['users'] }}">
 						<i class="material-icons">supervisor_account</i>
-						<p>Usuarios</p>
+						{{ link_to('/users', 'Usuarios', ['class' => 'nav-link']) }}
 					</li>
-					<li class="">
+					<li class="{{ $class['events'] }}">
 						<i class="material-icons">playlist_play</i>
-						<p>Programacion</p>
-					</li>
+						{{ link_to('/', 'Programación', ['class' => 'nav-link']) }}
 				</ul>
 			</aside>
 

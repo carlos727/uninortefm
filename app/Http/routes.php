@@ -19,6 +19,8 @@ Route::group(['middleware' => 'web'], function () {
 			'viernes'	=>	' ',
 			'sabado'	=>	' ',
 			'domingo'	=> 	' ',
+			'users'		=>	' ',
+			'events'	=>	'activeli',
 			'day'		=>	0
 		];
 
@@ -44,7 +46,7 @@ Route::group(['middleware' => 'web'], function () {
 	*/
 	Route::get('/json/lunes', function(){
 		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',1)
 					->get();
 
@@ -53,7 +55,7 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('/json/martes', function(){
 		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',2)
 					->get();
 
@@ -62,7 +64,7 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('/json/miercoles', function(){
 		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',3)
 					->get();
 
@@ -71,7 +73,7 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('/json/jueves', function(){
 		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',4)
 					->get();
 
@@ -80,7 +82,7 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('/json/viernes', function(){
 		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',5)
 					->get();
 
@@ -89,7 +91,7 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('/json/sabado', function(){
 		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',6)
 					->get();
 
@@ -98,7 +100,7 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('/json/domingo', function(){
 		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',7)
 					->get();
 
@@ -131,6 +133,8 @@ Route::group(['middleware' => 'web'], function () {
 			'viernes'	=>	' ',
 			'sabado'	=>	' ',
 			'domingo'	=>	' ',
+			'users'		=>	' ',
+			'events'	=>	'activeli',
 			'day'		=>	0
 		];
 
@@ -202,6 +206,8 @@ Route::group(['middleware' => 'web'], function () {
 			'viernes'	=>	' ',
 			'sabado'	=>	' ',
 			'domingo'	=>	' ',
+			'users'		=>	' ',
+			'events'	=>	'activeli',
 			'day'		=>	0
 		];
 
@@ -256,6 +262,8 @@ Route::group(['middleware' => 'web'], function () {
 			'viernes'	=>	' ',
 			'sabado'	=>	' ',
 			'domingo'	=>	' ',
+			'users'		=>	' ',
+			'events'	=>	'activeli',
 			'day'		=>	0
 		];
 
@@ -304,6 +312,26 @@ Route::group(['middleware' => 'web'], function () {
 					'events' => $events,
 					'class' => $class
 				]);
+	});
+
+	Route::get('/users', function(){
+
+		$class = [
+			'lunes'		=>	' ',
+			'martes'	=>	' ',
+			'miercoles'	=>	' ',
+			'jueves'	=>	' ',
+			'viernes'	=>	' ',
+			'sabado'	=>	' ',
+			'domingo'	=>	' ',
+			'users'		=>	'activeli',
+			'events'	=>	' ',
+			'day'		=>	0
+		];
+
+		return view('users',[
+			'class' => $class
+			]);
 	});
 
 });
