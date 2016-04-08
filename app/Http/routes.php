@@ -1,6 +1,7 @@
 <?php
 
 use App\Event;
+use App\User;
 use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'web'], function () {
@@ -28,83 +29,6 @@ Route::group(['middleware' => 'web'], function () {
 			'events' => $events,
 			'class' => $class
 		]);
-	});
-
-	/*
-	* Show all events in json format
-	*/
-	Route::get('/json', function(){
-		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at', 'day')
-					->get();
-
-		return Response::json($events);
-	});
-
-	/*
-	* Show events per day in json format
-	*/
-	Route::get('/json/lunes', function(){
-		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at', 'day')
-					->where('day','=',1)
-					->get();
-
-		return Response::json($events);
-	});
-
-	Route::get('/json/martes', function(){
-		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at', 'day')
-					->where('day','=',2)
-					->get();
-
-		return Response::json($events);
-	});
-
-	Route::get('/json/miercoles', function(){
-		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at', 'day')
-					->where('day','=',3)
-					->get();
-
-		return Response::json($events);
-	});
-
-	Route::get('/json/jueves', function(){
-		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at', 'day')
-					->where('day','=',4)
-					->get();
-
-		return Response::json($events);
-	});
-
-	Route::get('/json/viernes', function(){
-		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at', 'day')
-					->where('day','=',5)
-					->get();
-
-		return Response::json($events);
-	});
-
-	Route::get('/json/sabado', function(){
-		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at', 'day')
-					->where('day','=',6)
-					->get();
-
-		return Response::json($events);
-	});
-
-	Route::get('/json/domingo', function(){
-		$events = DB::table('events')
-					->select('id', 'name', 'start_at', 'end_at', 'day')
-					->where('day','=',7)
-					->get();
-
-		return Response::json($events);
 	});
 
 	/*
@@ -237,6 +161,9 @@ Route::group(['middleware' => 'web'], function () {
 				]);
 	});
 
+	/*
+	* Edit Event
+	*/
 	Route::put('/event/{event}', function ($id, Request $request) {
 
 		$event = Event::find($id);
@@ -314,7 +241,12 @@ Route::group(['middleware' => 'web'], function () {
 				]);
 	});
 
+	/*
+	* Show Users Dashboard
+	*/
 	Route::get('/users', function(){
+
+		$users = User::orderBy('username','asc')->get();
 
 		$class = [
 			'lunes'		=>	' ',
@@ -330,8 +262,210 @@ Route::group(['middleware' => 'web'], function () {
 		];
 
 		return view('users',[
+			'users' => $users,
 			'class' => $class
 			]);
+	});
+
+	/*
+	* Add New User
+	*/
+	Route::post('/users/user', function (Request $request) {
+
+		$validator = Validator::make($request->all(), [
+			'username'	=>	'required',
+			'rol'		=>	'required'
+		]);
+
+		$class = [
+			'lunes'		=>	' ',
+			'martes'	=>	' ',
+			'miercoles'	=>	' ',
+			'jueves'	=>	' ',
+			'viernes'	=>	' ',
+			'sabado'	=>	' ',
+			'domingo'	=>	' ',
+			'users'		=>	'activeli',
+			'events'	=>	' ',
+			'day'		=>	0
+		];
+
+		if ($validator->fails()) {
+			$users = User::orderBy('username', 'asc')->get();
+
+			return view('users', [
+					'users' => $users,
+					'class' => $class
+				])
+				->withErrors($validator->errors());
+		}
+
+		$user = new User;
+		$user->username = $request->username;
+		$user->rol = $request->rol;
+		$user->isActive = true;
+		$user->save();
+
+		$users = User::orderBy('username', 'asc')->get();
+
+		return view('users', [
+					'users' => $users,
+					'class' => $class
+				]);
+	});
+
+	/*
+	* Delete User
+	*/
+	Route::delete('/users/user/{user}', function ($id) {
+
+		$class = [
+			'lunes'		=>	' ',
+			'martes'	=>	' ',
+			'miercoles'	=>	' ',
+			'jueves'	=>	' ',
+			'viernes'	=>	' ',
+			'sabado'	=>	' ',
+			'domingo'	=>	' ',
+			'users'		=>	'activeli',
+			'events'	=>	' ',
+			'day'		=>	0
+		];
+
+		User::findOrFail($id)->delete();
+
+		$users = User::orderBy('username', 'asc')->get();
+
+		return view('users', [
+					'users' => $users,
+					'class' => $class
+				]);
+	});
+
+	/*
+	* Edit User
+	*/
+	Route::put('/users/user/{user}', function ($id, Request $request) {
+
+		$user = User::find($id);
+
+		$validator = Validator::make($request->all(), [
+			'username'	=>	'required',
+			'rol'		=>	'required',
+			'isActive'	=>	'required'
+		]);
+
+		$class = [
+			'lunes'		=>	' ',
+			'martes'	=>	' ',
+			'miercoles'	=>	' ',
+			'jueves'	=>	' ',
+			'viernes'	=>	' ',
+			'sabado'	=>	' ',
+			'domingo'	=>	' ',
+			'users'		=>	'activeli',
+			'events'	=>	' ',
+			'day'		=>	0
+		];
+
+		if ($validator->fails()) {
+			$users = User::orderBy('username', 'asc')->get();
+
+			return view('users', [
+					'users' => $users,
+					'class' => $class
+				])
+				->withErrors($validator->errors());
+		}
+
+		$user->username = $request->username;
+		$user->rol = $request->rol;
+		$user->isActive = $request->isActive;
+		$user->save();
+
+		$users = User::orderBy('username', 'asc')->get();
+
+		return view('users', [
+					'users' => $users,
+					'class' => $class
+				]);
+	});
+
+	/*
+	* Show all events in json format
+	*/
+	Route::get('/json', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
+					->get();
+
+		return Response::json($events);
+	});
+
+	/*
+	* Show events per day in json format
+	*/
+	Route::get('/json/lunes', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
+					->where('day','=',1)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/martes', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
+					->where('day','=',2)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/miercoles', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
+					->where('day','=',3)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/jueves', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
+					->where('day','=',4)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/viernes', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
+					->where('day','=',5)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/sabado', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
+					->where('day','=',6)
+					->get();
+
+		return Response::json($events);
+	});
+
+	Route::get('/json/domingo', function(){
+		$events = DB::table('events')
+					->select('id', 'name', 'start_at', 'end_at', 'day')
+					->where('day','=',7)
+					->get();
+
+		return Response::json($events);
 	});
 
 });

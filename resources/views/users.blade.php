@@ -15,7 +15,8 @@
 			<div class="modal-content">
 				<h4>Nuevo Usuario</h4>
 				<div class="row">
-					<form class="col s12">
+					<form action="{{ url('users/user') }}" method="POST"  class="col s12">
+						{!! csrf_field() !!}
 						<div class="row">
 							<div class="input-field col s10 offset-s1">
 								<i class="material-icons prefix">account_circle</i>
@@ -33,63 +34,188 @@
 								</select>
 							</div>
 						</div>
-						<div class="row">
-							<button type="submit" class="btn modal-action modal-close waves-effect waves-green">Habilitar</button>
-						</div>
+						<button type="submit" class="btn modal-action modal-close waves-effect waves-green">Habilitar</button>
 					</form>
 				</div>
 			</div>
 		</div>
+		@include('common.errors')
 	</div>
 
-	<section class="row">
-		<div class="col s5">
-			<h4 class="center">Usuarios Habilitados</h4>
-			<table>
-				<thead>
-					<tr>
-						<td>Nombre de Usuario</td>
-						<td>Rol</td>
-						<td>Acciones</td>
-					</tr>
-				</thead>
+	@if (count($users) > 0)
+		<section class="row">
+			<?php $a=0 ?>
+			@foreach ($users as $user)
+				@if ($event->isActive == true)
+					<?php $a++; ?>
+				@endif
+			@endforeach
 
-				<tbody>
-					<tr>
-						<td>Username</td>
-						<td>Usuario DTIC</td>
-						<td>
-							<button type="submit" class="btn waves-effect waves-green tooltipped" data-position="left" data-delay="50" data-tooltip="Inhabilitar"><i class="material-icons">lock_outline</i></button>
-							<button id="btndlt" type="submit" class="btn waves-effect waves-green tooltipped" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+			<?php if ($a > 0) { ?>
+				<div class="col s5">
+					<h5 class="center">Usuarios Habilitados</h5>
+					<table>
+						<thead>
+							<tr>
+								<th data-field="username">Nombre de Usuario</th>
+								<th data-field="rol">Rol</th>
+								<th data-field="actions">Acciones</th>
+							</tr>
+						</thead>
 
-		<div class="col s5 offset-s1">
-			<h4 class="center">Usuarios Inhabilitados</h4>
-			<table>
-				<thead>
-					<tr>
-						<td>Nombre de Usuario</td>
-						<td>Rol</td>
-						<td>Acciones</td>
-					</tr>
-				</thead>
+						<tbody>
+							@foreach ($users as $user)
+								@if ($user->isActive == true)
+									<tr>
+										<td><div>{{ $user->username }}</div></td>
+										<td>
+											<div>
+												@if ($user->rol == 'admin')
+													Usuario DTIC
+												@else
+													Usuario Emisora
+												@endif
+											</div>
+										</td>
+										<td>
+											<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modet{{ $user->id }}" data-position="left" data-delay="50" data-tooltip="Inhabilitar"><i class="material-icons">lock_outline</i></a>
+											<div id="modet{{ $user->id }}" class="modal">
+												<div class="modal-content center">
+													<h4 class="center">Inhabilitar Usuario</h4>
+													<div class="row">
+														<form class="col s12" action="{{ url('users/user/'.$user->id) }}" method="POST">
+															{!! csrf_field() !!}
+															{!! method_field('PUT') !!}
+															<div class="row">
+																<div class="col s4 center"><img src="{{ URL::asset('img/Lock-Outline.png') }}" alt=""></div>
+																<div id="del-cont" class="col s8">
+																	<p><b>¿Estas seguro de inhabilitar este usuario?</b></p>
+																	<p>Nombre: {{ $usert->username }}</p>
+																	<p>Rol: {{ $user->rol }}</p>
+																</div>
+															</div>
+															<input type="text" name="username" value="{{ $user->username }}" class="hide">
+															<input type="text" name="rol" value="{{ $user->rol }}" class="hide">
+															<input type="text" name="isActive" value="false" class="hide">
+															<button type="submit" class="btn modal-action modal-close waves-effect waves-green">Inhabilitar</button>
+														</form>
+													</div>
+												</div>
+											</div>
+											<a id="btndlt"  class="waves-effect waves-light btn modal-trigger tooltipped" href="#model{{ $user->id }}" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></a>
+											<div id="model{{ $user->id }}" class="modal">
+												<div class="modal-content">
+													<h4 class="center">Eliminar Usuario</h4>
+													<div class="row">
+														<div class="col s4 center"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
+														<div id="del-cont" class="col s8">
+															<p><b>¿Estas seguro de descartar este usuario?</b></p>
+															<p>Nombre: {{ $user->username }}</p>
+															<p>Rol: {{ $user->rol }}</p>
+														</div>
+													</div>
+													<form action="{{ url('users/user/'.$user->id) }}" method="POST" class="center">
+														{!! csrf_field() !!}
+														{!! method_field('DELETE') !!}
+														<button type="submit" class="btn modal-action modal-close waves-effect waves-green">Eliminar</button>
+													</form>
+												</div>
+											</div>
+										</td>
+									</tr>
+								@endif
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+			<?php } ?>
 
-				<tbody>
-					<tr>
-						<td>Username</td>
-						<td>Usuario Emisora</td>
-						<td>
-							<button type="submit" class="btn waves-effect waves-green tooltipped" data-position="left" data-delay="50" data-tooltip="Habilitar"><i class="material-icons">lock_open</i></button>
-							<button id="btndlt" type="submit" class="btn waves-effect waves-green tooltipped" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</section>
+			<?php $a=0 ?>
+			@foreach ($users as $user)
+				@if ($event->isActive == false)
+					<?php $a++; ?>
+				@endif
+			@endforeach
+
+			<?php if ($a > 0) { ?>
+				<div class="col s5 offset-s1">
+					<h5 class="center">Usuarios Inhabilitados</h5>
+					<table>
+						<thead>
+							<tr>
+								<th data-field="username">Nombre de Usuario</th>
+								<th data-field="rol">Rol</th>
+								<th data-field="actions">Acciones</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							@foreach ($users as $user)
+								@if ($user->isActive == false)
+									<tr>
+										<td><div>{{ $user->username }}</div></td>
+										<td>
+											<div>
+												@if ($user->rol == 'admin')
+													Usuario DTIC
+												@else
+													Usuario Emisora
+												@endif
+											</div>
+										</td>
+										<td>
+											<a class="waves-effect waves-light btn modal-trigger tooltipped" href="#modeti{{ $user->id }}" data-position="left" data-delay="50" data-tooltip="Habilitar"><i class="material-icons">lock_open</i></a>
+											<div id="modeti{{ $user->id }}" class="modal">
+												<div class="modal-content center">
+													<h4 class="center">Habilitar Usuario</h4>
+													<div class="row">
+														<form class="col s12" action="{{ url('users/user/'.$user->id) }}" method="POST">
+															{!! csrf_field() !!}
+															{!! method_field('PUT') !!}
+															<div class="row">
+																<div class="col s4 center"><img src="{{ URL::asset('img/open-lock.png') }}" alt=""></div>
+																<div id="del-cont" class="col s8">
+																	<p><b>¿Estas seguro de habilitar este usuario?</b></p>
+																	<p>Nombre: {{ $usert->username }}</p>
+																	<p>Rol: {{ $user->rol }}</p>
+																</div>
+															</div>
+															<input type="text" name="username" value="{{ $user->username }}" class="hide">
+															<input type="text" name="rol" value="{{ $user->rol }}" class="hide">
+															<input type="text" name="isActive" value="true" class="hide">
+															<button type="submit" class="btn modal-action modal-close waves-effect waves-green">Inhabilitar</button>
+														</form>
+													</div>
+												</div>
+											</div>
+											<a id="btndlt"  class="waves-effect waves-light btn modal-trigger tooltipped" href="#modeli{{ $user->id }}" data-position="right" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete_forever</i></a>
+											<div id="modeli{{ $user->id }}" class="modal">
+												<div class="modal-content">
+													<h4 class="center">Eliminar Usuario</h4>
+													<div class="row">
+														<div class="col s4 center"><img src="{{ URL::asset('img/Icon-warning.png') }}" alt=""></div>
+														<div id="del-cont" class="col s8">
+															<p><b>¿Estas seguro de descartar este usuario?</b></p>
+															<p>Nombre: {{ $user->username }}</p>
+															<p>Rol: {{ $user->rol }}</p>
+														</div>
+													</div>
+													<form action="{{ url('users/user/'.$user->id) }}" method="POST" class="center">
+														{!! csrf_field() !!}
+														{!! method_field('DELETE') !!}
+														<button type="submit" class="btn modal-action modal-close waves-effect waves-green">Eliminar</button>
+													</form>
+												</div>
+											</div>
+										</td>
+									</tr>
+								@endif
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+			<?php } ?>
+		</section>
+	@endif
 
 @endsection
