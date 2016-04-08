@@ -46,7 +46,7 @@
 		<section class="row">
 			<?php $a=0 ?>
 			@foreach ($users as $user)
-				@if ($event->isActive == true)
+				@if ($user->isActive == true)
 					<?php $a++; ?>
 				@endif
 			@endforeach
@@ -132,7 +132,7 @@
 
 			<?php $a=0 ?>
 			@foreach ($users as $user)
-				@if ($event->isActive == false)
+				@if ($user->isActive == false)
 					<?php $a++; ?>
 				@endif
 			@endforeach
