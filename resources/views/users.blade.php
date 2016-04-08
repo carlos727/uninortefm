@@ -90,7 +90,7 @@
 																<div class="col s4 center"><img src="{{ URL::asset('img/Lock-Outline.png') }}" alt=""></div>
 																<div id="del-cont" class="col s8">
 																	<p><b>¿Estas seguro de inhabilitar este usuario?</b></p>
-																	<p>Nombre: {{ $usert->username }}</p>
+																	<p>Nombre: {{ $user->username }}</p>
 																	<p>Rol: {{ $user->rol }}</p>
 																</div>
 															</div>
@@ -176,7 +176,7 @@
 																<div class="col s4 center"><img src="{{ URL::asset('img/open-lock.png') }}" alt=""></div>
 																<div id="del-cont" class="col s8">
 																	<p><b>¿Estas seguro de habilitar este usuario?</b></p>
-																	<p>Nombre: {{ $usert->username }}</p>
+																	<p>Nombre: {{ $user->username }}</p>
 																	<p>Rol: {{ $user->rol }}</p>
 																</div>
 															</div>
