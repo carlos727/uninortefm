@@ -54,7 +54,7 @@
 			<?php if ($a > 0) { ?>
 				<div class="col s5">
 					<h5 class="center">Usuarios Habilitados</h5>
-					<table>
+					<table class="striped">
 						<thead>
 							<tr>
 								<th data-field="username">Nombre de Usuario</th>
@@ -91,7 +91,13 @@
 																<div id="del-cont" class="col s8">
 																	<p><b>¿Estas seguro de inhabilitar este usuario?</b></p>
 																	<p>Nombre: {{ $user->username }}</p>
-																	<p>Rol: {{ $user->rol }}</p>
+																	<p>Rol: 
+																		@if ($user->rol == 'admin')
+																			Usuario DTIC
+																		@else
+																			Usuario Emisora
+																		@endif
+																	</p>
 																</div>
 															</div>
 															<input type="text" name="username" value="{{ $user->username }}" class="hide">
@@ -111,7 +117,13 @@
 														<div id="del-cont" class="col s8">
 															<p><b>¿Estas seguro de descartar este usuario?</b></p>
 															<p>Nombre: {{ $user->username }}</p>
-															<p>Rol: {{ $user->rol }}</p>
+															<p>Rol: 
+																@if ($user->rol == 'admin')
+																	Usuario DTIC
+																@else
+																	Usuario Emisora
+																@endif
+															</p>
 														</div>
 													</div>
 													<form action="{{ url('users/user/'.$user->id) }}" method="POST" class="center">
@@ -140,7 +152,7 @@
 			<?php if ($a > 0) { ?>
 				<div class="col s5 offset-s1">
 					<h5 class="center">Usuarios Inhabilitados</h5>
-					<table>
+					<table class="striped">
 						<thead>
 							<tr>
 								<th data-field="username">Nombre de Usuario</th>
@@ -177,13 +189,19 @@
 																<div id="del-cont" class="col s8">
 																	<p><b>¿Estas seguro de habilitar este usuario?</b></p>
 																	<p>Nombre: {{ $user->username }}</p>
-																	<p>Rol: {{ $user->rol }}</p>
+																	<p>Rol: 
+																		@if ($user->rol == 'admin')
+																			Usuario DTIC
+																		@else
+																			Usuario Emisora
+																		@endif
+																	</p>
 																</div>
 															</div>
 															<input type="text" name="username" value="{{ $user->username }}" class="hide">
 															<input type="text" name="rol" value="{{ $user->rol }}" class="hide">
 															<input type="text" name="isActive" value="true" class="hide">
-															<button type="submit" class="btn modal-action modal-close waves-effect waves-green">Inhabilitar</button>
+															<button type="submit" class="btn modal-action modal-close waves-effect waves-green">Habilitar</button>
 														</form>
 													</div>
 												</div>
@@ -197,7 +215,13 @@
 														<div id="del-cont" class="col s8">
 															<p><b>¿Estas seguro de descartar este usuario?</b></p>
 															<p>Nombre: {{ $user->username }}</p>
-															<p>Rol: {{ $user->rol }}</p>
+															<p>Rol: 
+																@if ($user->rol == 'admin')
+																	Usuario DTIC
+																@else
+																	Usuario Emisora
+																@endif
+															</p>
 														</div>
 													</div>
 													<form action="{{ url('users/user/'.$user->id) }}" method="POST" class="center">
