@@ -18,7 +18,7 @@
 					<form action="{{ url('users/user') }}" method="POST"  class="col s12">
 						{!! csrf_field() !!}
 						<div class="row">
-							<div class="input-field col s8 offset-s2">
+							<div class="input-field col s10 offset-s1">
 								<i class="material-icons prefix">account_circle</i>
 								<input id="icon_prefix" type="text" name="username">
 								<label for="icon_prefix">Nombre de usuario</label>
@@ -26,7 +26,7 @@
 						</div>
 						<div class="row dv-rol">
 							<label for="rol">Rol del Usuario</label>
-							<div id="rol" class="col s8 offset-s2">
+							<div id="rol" class="col s10 offset-s1">
 								<select name="rol">
 									<option value="" disabled selected>Seleccione un rol</option>
 									<option value="admin">Usuario DTIC</option>
@@ -52,7 +52,7 @@
 			@endforeach
 
 			<?php if ($a > 0) { ?>
-				<div class="col s5">
+				<div class="col l5 m12">
 					<h5 class="center">Habilitados</h5>
 					<table class="striped">
 						<thead>
@@ -150,7 +150,7 @@
 			@endforeach
 
 			<?php if ($a > 0) { ?>
-				<div class="col s5 offset-s1">
+				<div class="col l5 offset-l1 m12 offset-m0">
 					<h5 class="center">Inhabilitados</h5>
 					<table class="striped">
 						<thead>

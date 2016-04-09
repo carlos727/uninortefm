@@ -17,7 +17,7 @@
 	<body>
 		<div class="row">
 			<aside>
-				<ul class="side-nav fixed col s2">
+				<ul class="side-nav fixed col l2 m3">
 					<header class="center">
 						<div>
 							<a id="logo" href="{{ URL::to('/') }}"><img src="{{ URL::asset('img/logo.png') }}" alt="Logo Uninorte FM"></a>
@@ -35,16 +35,16 @@
 						</div>
 					</header>
 					<li class="{{ $class['users'] }}">
-						<i class="material-icons">supervisor_account</i>
+						<i class="material-icons nav-icon">supervisor_account</i>
 						{{ link_to('/users', 'Usuarios', ['class' => 'nav-link']) }}
 					</li>
 					<li class="{{ $class['events'] }}">
-						<i class="material-icons">playlist_play</i>
+						<i class="material-icons nav-icon">playlist_play</i>
 						{{ link_to('/', 'Programación', ['class' => 'nav-link']) }}
 				</ul>
 			</aside>
 
-			<section class="col s10 offset-s2">
+			<section class="col l10 offset-l2 m9 offset-m3">
 				@yield('content')
 			</section>
 		</div>

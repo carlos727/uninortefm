@@ -10,6 +10,7 @@ section { padding-left:0; }
 h2 {
     background-color:#cb333b;
     color:white;
+    font-size:3rem;
     margin:0;
     padding:1.78rem 0 1.424rem 0;
 }
@@ -53,6 +54,8 @@ div[id^="tab"] { margin-top:45px; }
 	color:black;
 }
 
+.tabs .tab { min-width:0; }
+
 .tabs .tab a { color:#cb333b; }
 
 .side-nav {
@@ -70,15 +73,13 @@ div[id^="tab"] { margin-top:45px; }
 	font-size:1.1rem;
 	line-height:1;
 	margin:0;
-	padding:0 5px;
+	padding:0 5px !important;
 }
 
 .dropdown-content li, .dropdown-content li > a {
 	line-height:40px;
 	min-height:40px;
 }
-
-.modal { width:50%; }
 
 .modal-content img {
 	height:120px;
@@ -109,3 +110,20 @@ div[id^="tab"] { margin-top:45px; }
 .input-field .prefix.active { color:black; }
 
 .activeli { background-color:black; }
+
+@media (min-width:993px and max-width:1004px) {
+
+	.side-nav .nav-link { font-size: 1rem; }
+}
+
+@media (max-width: 900px) {
+
+	h2 { font-size:2rem;}
+
+}
+
+@media (max-width: 659px) {
+
+	.nav-icon { display:none;}
+
+}
