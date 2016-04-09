@@ -124,6 +124,6 @@ div[id^="tab"] { margin-top:45px; }
 
 @media screen and (max-width:659px) {
 
-	.nav-icon { display:none; }
+	aside i { display:none; }
 
 }
