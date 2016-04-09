@@ -1,25 +1,21 @@
 header {
 	background-color:white;
-	border-bottom: 1px solid #CCC;
+	border-bottom:1px solid #CCC;
 	color:black;
 }
-header .row {
-	margin-bottom: 0;
-}
+header .row { margin-bottom:0; }
 
-section {
-	padding-left: 0;
-}
+section { padding-left:0; }
 
 h2 {
-    background-color: #cb333b;
-    color: white;
-    margin: 0;
-    padding: 1.78rem 0 1.424rem 0;
+    background-color:#cb333b;
+    color:white;
+    margin:0;
+    padding:1.78rem 0 1.424rem 0;
 }
 
 table {
-	margin: 40px 0 0 20px;
+	margin:40px 0 0 20px;
 	width:95%;
 }
 
@@ -36,7 +32,7 @@ table {
 	color:black;
 }
 
-div[id^="tab"] { margin-top: 45px; }
+div[id^="tab"] { margin-top:45px; }
 
 #del-cont p {
 	margin-bottom:0;
@@ -57,35 +53,32 @@ div[id^="tab"] { margin-top: 45px; }
 	color:black;
 }
 
-.tabs .tab a {
-    color: #cb333b;
-}
+.tabs .tab a { color:#cb333b; }
 
 .side-nav {
 	background-color:#cb333b;
     color:white;
 }
 
-.side-nav a {
-	height: 40px;
-}
+.side-nav a { height:40px; }
 
 .side-nav li { border-bottom: 1px solid #CCC; }
 
 .side-nav .nav-link {
 	color:white !important;
-	display: inline-block !important;
-	font-size: 18px;
-	line-height: 1;
-	margin: 0;
+	display:inline-block !important;
+	font-size:1.1rem;
+	line-height:1;
+	margin:0;
+	padding:0 5px;
 }
 
 .dropdown-content li, .dropdown-content li > a {
-	line-height: 40px;
-	min-height: 40px;
+	line-height:40px;
+	min-height:40px;
 }
 
-.modal { width: 40%; }
+.modal { width:50%; }
 
 .modal-content img {
 	height:120px;
@@ -104,7 +97,7 @@ div[id^="tab"] { margin-top: 45px; }
 }
 
 .dv-time p {
-	font-size: 20px;
+	font-size:20px;
 	margin-top:6px;
 }
 

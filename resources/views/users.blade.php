@@ -18,7 +18,7 @@
 					<form action="{{ url('users/user') }}" method="POST"  class="col s12">
 						{!! csrf_field() !!}
 						<div class="row">
-							<div class="input-field col s10 offset-s1">
+							<div class="input-field col s8 offset-s2">
 								<i class="material-icons prefix">account_circle</i>
 								<input id="icon_prefix" type="text" name="username">
 								<label for="icon_prefix">Nombre de usuario</label>
@@ -26,7 +26,7 @@
 						</div>
 						<div class="row dv-rol">
 							<label for="rol">Rol del Usuario</label>
-							<div id="rol" class="col s10 offset-s1">
+							<div id="rol" class="col s8 offset-s2">
 								<select name="rol">
 									<option value="" disabled selected>Seleccione un rol</option>
 									<option value="admin">Usuario DTIC</option>
@@ -53,11 +53,11 @@
 
 			<?php if ($a > 0) { ?>
 				<div class="col s5">
-					<h5 class="center">Usuarios Habilitados</h5>
+					<h5 class="center">Habilitados</h5>
 					<table class="striped">
 						<thead>
 							<tr>
-								<th data-field="username">Nombre de Usuario</th>
+								<th data-field="username">Usuario</th>
 								<th data-field="rol">Rol</th>
 								<th data-field="actions">Acciones</th>
 							</tr>
@@ -71,9 +71,9 @@
 										<td>
 											<div>
 												@if ($user->rol == 'admin')
-													Usuario DTIC
+													DTIC
 												@else
-													Usuario Emisora
+													Emisora
 												@endif
 											</div>
 										</td>
@@ -151,11 +151,11 @@
 
 			<?php if ($a > 0) { ?>
 				<div class="col s5 offset-s1">
-					<h5 class="center">Usuarios Inhabilitados</h5>
+					<h5 class="center">Inhabilitados</h5>
 					<table class="striped">
 						<thead>
 							<tr>
-								<th data-field="username">Nombre de Usuario</th>
+								<th data-field="username">Usuario</th>
 								<th data-field="rol">Rol</th>
 								<th data-field="actions">Acciones</th>
 							</tr>
@@ -169,9 +169,9 @@
 										<td>
 											<div>
 												@if ($user->rol == 'admin')
-													Usuario DTIC
+													DTIC
 												@else
-													Usuario Emisora
+													Emisora
 												@endif
 											</div>
 										</td>

@@ -20,7 +20,7 @@
 				<ul class="side-nav fixed col s2">
 					<header class="center">
 						<div>
-							<a id="logo" href="#"><img src="{{ URL::asset('img/logo.png') }}" alt="Logo Uninorte FM"></a>
+							<a id="logo" href="{{ URL::to('/') }}"><img src="{{ URL::asset('img/logo.png') }}" alt="Logo Uninorte FM"></a>
 						</div>
 						<div class="row">
 							<div class="col s6"><p>Usuario</p></div>
