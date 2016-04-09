@@ -111,7 +111,7 @@ div[id^="tab"] { margin-top:45px; }
 
 .activeli { background-color:black; }
 
-@media screen and (min-width:993px and max-width:1004px) {
+@media screen and (min-width:974px) and (max-width:1005px) ){
 
 	.side-nav .nav-link { font-size: 1rem; }
 }
