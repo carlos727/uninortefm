@@ -111,19 +111,19 @@ div[id^="tab"] { margin-top:45px; }
 
 .activeli { background-color:black; }
 
-@media (min-width:993px and max-width:1004px) {
+@media screen and (min-width:993px and max-width:1004px) {
 
 	.side-nav .nav-link { font-size: 1rem; }
 }
 
-@media (max-width: 900px) {
+@media screen and (max-width:900px) {
 
 	h2 { font-size:2rem;}
 
 }
 
-@media (max-width: 659px) {
+@media screen and (max-width:659px) {
 
-	.nav-icon { display:none;}
+	.nav-icon { display:none; }
 
 }
