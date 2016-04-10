@@ -12,7 +12,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/', ['as' => 'home', function () {
 		$events = Event::orderBy('start_at', 'asc')->get();
 
-		$class = [
+		/*$class = [
 			'lunes'		=>	'active',
 			'martes'	=>	' ',
 			'miercoles'	=>	' ',
@@ -23,7 +23,7 @@ Route::group(['middleware' => 'web'], function () {
 			'users'		=>	' ',
 			'events'	=>	'activeli',
 			'day'		=>	0
-		];
+		];*/
 
 		return view('events', [
 			'events' => $events,
@@ -357,11 +357,11 @@ Route::group(['middleware' => 'web'], function () {
 
 		$user = User::find($id);
 
-		$validator = Validator::make($request->all(), [
+		/*$validator = Validator::make($request->all(), [
 			'username'	=>	'required',
 			'rol'		=>	'required',
 			'isActive'	=>	'required'
-		]);
+		]);*/
 
 		$class = [
 			'lunes'		=>	' ',
@@ -376,7 +376,7 @@ Route::group(['middleware' => 'web'], function () {
 			'day'		=>	0
 		];
 
-		if ($validator->fails()) {
+		/*if ($validator->fails()) {
 			$users = User::orderBy('username', 'asc')->get();
 
 			//return view('users', [
@@ -385,7 +385,7 @@ Route::group(['middleware' => 'web'], function () {
 					'class' => $class
 				])
 				->withErrors($validator->errors());
-		}
+		}*/
 
 		$user->username = $request->username;
 		$user->rol = $request->rol;
