@@ -9,7 +9,7 @@ Route::group(['middleware' => 'web'], function () {
 	/*
 	* Show Event Dashboard
 	*/
-	Route::get('/', ['as' => 'home', function () {
+	Route::get('/', function () {
 		$events = Event::orderBy('start_at', 'asc')->get();
 
 		$class = [
@@ -29,7 +29,7 @@ Route::group(['middleware' => 'web'], function () {
 			'events' => $events,
 			'class' => $class
 		]);
-	}]);
+	});
 
 	/*
 	* Add New Event
