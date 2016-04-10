@@ -12,7 +12,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/', ['as' => 'home', function () {
 		$events = Event::orderBy('start_at', 'asc')->get();
 
-		/*$class = [
+		$class = [
 			'lunes'		=>	'active',
 			'martes'	=>	' ',
 			'miercoles'	=>	' ',
@@ -23,7 +23,7 @@ Route::group(['middleware' => 'web'], function () {
 			'users'		=>	' ',
 			'events'	=>	'activeli',
 			'day'		=>	0
-		];*/
+		];
 
 		return view('events', [
 			'events' => $events,
@@ -88,11 +88,12 @@ Route::group(['middleware' => 'web'], function () {
 		if ($validator->fails()) {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
+			$parameters = ['events' => $events, 'class' => $class];
+
 			//return view('events', [
-			return Redirect::route('home', [
-					'events' => $events,
-					'class' => $class
-				])
+			return redirect()
+				->back()
+				->with($parameters)
 				->withErrors($validator->errors());
 		}
 
@@ -105,13 +106,13 @@ Route::group(['middleware' => 'web'], function () {
 
 		$events = Event::orderBy('start_at', 'asc')->get();
 
-
+		$parameters = ['events' => $events, 'class' => $class];
 
 		//return view('events', [
-		return Redirect::route('home', [
-					'events' => $events,
-					'class' => $class
-				]);
+		return redirect()
+			->back()
+			->with($parameters)
+			->withErrors($validator->errors());
 	});
 
 	/*
