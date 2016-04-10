@@ -88,11 +88,10 @@ Route::group(['middleware' => 'web'], function () {
 		if ($validator->fails()) {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
-			$parameters = ['events' => $events, 'class' => $class];
-
-			//return view('events', [
-			return Redirect::to('/')
-				->with($parameters)
+			return view('events', [
+					'events' => $events,
+					'class' => $class
+				])
 				->withErrors($validator->errors());
 		}
 
@@ -105,11 +104,10 @@ Route::group(['middleware' => 'web'], function () {
 
 		$events = Event::orderBy('start_at', 'asc')->get();
 
-		$parameters = ['events' => $events, 'class' => $class];
-
-		//return view('events', [
-		return Redirect::to('/')
-			->with($parameters);
+		return view('events', [
+			'events' => $events,
+			'class' => $class
+		]);
 	});
 
 	/*
@@ -155,15 +153,10 @@ Route::group(['middleware' => 'web'], function () {
 
 		$events = Event::orderBy('start_at', 'asc')->get();
 
-		/*return view('events', [
-		return Redirect::route('home', [
+		return view('events', [
 					'events' => $events,
 					'class' => $class
-				]);*/
-		$parameters = ['events' => $events, 'class' => $class];
-
-		return redirect('/')
-			->with($parameters);
+				]);
 	});
 
 	/*
@@ -225,11 +218,10 @@ Route::group(['middleware' => 'web'], function () {
 		if ($validator->fails()) {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
-			$parameters = ['events' => $events, 'class' => $class];
-
-			//return view('events', [
-			return redirect('/')
-				->with($parameters)
+			return view('events', [
+					'events' => $events,
+					'class' => $class
+				])
 				->withErrors($validator->errors());
 		}
 
@@ -241,10 +233,10 @@ Route::group(['middleware' => 'web'], function () {
 
 		$events = Event::orderBy('start_at', 'asc')->get();
 
-		$parameters = ['events' => $events, 'class' => $class];
-
-		return redirect('/')
-			->with($parameters);
+		return view('events', [
+			'events' => $events,
+			'class' => $class
+		]);
 	});
 
 	/*
