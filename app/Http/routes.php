@@ -88,7 +88,8 @@ Route::group(['middleware' => 'web'], function () {
 		if ($validator->fails()) {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
-			return view('events', [
+			//return view('events', [
+			return Redirect::route('/', [
 					'events' => $events,
 					'class' => $class
 				])
@@ -106,7 +107,8 @@ Route::group(['middleware' => 'web'], function () {
 
 
 
-		return view('events', [
+		//return view('events', [
+		return Redirect::route('/', [
 					'events' => $events,
 					'class' => $class
 				]);
