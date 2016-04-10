@@ -91,8 +91,7 @@ Route::group(['middleware' => 'web'], function () {
 			$parameters = ['events' => $events, 'class' => $class];
 
 			//return view('events', [
-			return redirect()
-				->back()
+			return redirect('/')
 				->with($parameters)
 				->withErrors($validator->errors());
 		}
@@ -109,10 +108,8 @@ Route::group(['middleware' => 'web'], function () {
 		$parameters = ['events' => $events, 'class' => $class];
 
 		//return view('events', [
-		return redirect()
-			->back()
-			->with($parameters)
-			->withErrors($validator->errors());
+		return redirect('/')
+			->with($parameters);
 	});
 
 	/*
@@ -165,10 +162,8 @@ Route::group(['middleware' => 'web'], function () {
 				]);*/
 		$parameters = ['events' => $events, 'class' => $class];
 
-		return redirect()
-			->back()
-			->with($parameters)
-			->withErrors($validator->errors());
+		return redirect('/')
+			->with($parameters);
 	});
 
 	/*
@@ -233,10 +228,8 @@ Route::group(['middleware' => 'web'], function () {
 			$parameters = ['events' => $events, 'class' => $class];
 
 			//return view('events', [
-			return redirect()
-				->back()
+			return redirect('/')
 				->with($parameters)
-				->withErrors($validator->errors())
 				->withErrors($validator->errors());
 		}
 
@@ -250,10 +243,8 @@ Route::group(['middleware' => 'web'], function () {
 
 		$parameters = ['events' => $events, 'class' => $class];
 
-		return redirect()
-			->back()
-			->with($parameters)
-			->withErrors($validator->errors());
+		return redirect('/')
+			->with($parameters);
 	});
 
 	/*
