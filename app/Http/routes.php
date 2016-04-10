@@ -9,7 +9,7 @@ Route::group(['middleware' => 'web'], function () {
 	/*
 	* Show Event Dashboard
 	*/
-	Route::get('/', function () {
+	Route::get('/', ['as' => 'home', function () {
 		$events = Event::orderBy('start_at', 'asc')->get();
 
 		$class = [
@@ -29,7 +29,7 @@ Route::group(['middleware' => 'web'], function () {
 			'events' => $events,
 			'class' => $class
 		]);
-	});
+	}]);
 
 	/*
 	* Add New Event
@@ -89,7 +89,7 @@ Route::group(['middleware' => 'web'], function () {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
 			//return view('events', [
-			return Redirect::route('', [
+			return Redirect::route('home', [
 					'events' => $events,
 					'class' => $class
 				])
@@ -108,7 +108,7 @@ Route::group(['middleware' => 'web'], function () {
 
 
 		//return view('events', [
-		return Redirect::route('', [
+		return Redirect::route('home', [
 					'events' => $events,
 					'class' => $class
 				]);
@@ -158,7 +158,7 @@ Route::group(['middleware' => 'web'], function () {
 		$events = Event::orderBy('start_at', 'asc')->get();
 
 		//return view('events', [
-		return Redirect::route('', [
+		return Redirect::route('home', [
 					'events' => $events,
 					'class' => $class
 				]);
@@ -224,7 +224,7 @@ Route::group(['middleware' => 'web'], function () {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
 			//return view('events', [
-			return Redirect::route('', [
+			return Redirect::route('home', [
 					'events' => $events,
 					'class' => $class
 				])
@@ -240,7 +240,7 @@ Route::group(['middleware' => 'web'], function () {
 		$events = Event::orderBy('start_at', 'asc')->get();
 
 		//return view('events', [
-		return Redirect::route('', [
+		return Redirect::route('home', [
 					'events' => $events,
 					'class' => $class
 				]);
@@ -249,7 +249,7 @@ Route::group(['middleware' => 'web'], function () {
 	/*
 	* Show Users Dashboard
 	*/
-	Route::get('/users', function(){
+	Route::get('/users', ['as' => 'users', function(){
 
 		$users = User::orderBy('username','asc')->get();
 
@@ -266,12 +266,11 @@ Route::group(['middleware' => 'web'], function () {
 			'day'		=>	0
 		];
 
-		//return view('users',[
-		return Redirect::route('users', [
+		return view('users',[
 			'users' => $users,
 			'class' => $class
 			]);
-	});
+	}]);
 
 	/*
 	* Add New User
