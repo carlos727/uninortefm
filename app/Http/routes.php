@@ -89,7 +89,7 @@ Route::group(['middleware' => 'web'], function () {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
 			//return view('events', [
-			return Redirect::route('/', [
+			return Redirect::route('', [
 					'events' => $events,
 					'class' => $class
 				])
@@ -108,7 +108,7 @@ Route::group(['middleware' => 'web'], function () {
 
 
 		//return view('events', [
-		return Redirect::route('/', [
+		return Redirect::route('', [
 					'events' => $events,
 					'class' => $class
 				]);
@@ -157,7 +157,8 @@ Route::group(['middleware' => 'web'], function () {
 
 		$events = Event::orderBy('start_at', 'asc')->get();
 
-		return view('events', [
+		//return view('events', [
+		return Redirect::route('', [
 					'events' => $events,
 					'class' => $class
 				]);
@@ -222,7 +223,8 @@ Route::group(['middleware' => 'web'], function () {
 		if ($validator->fails()) {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
-			return view('events', [
+			//return view('events', [
+			return Redirect::route('', [
 					'events' => $events,
 					'class' => $class
 				])
@@ -237,7 +239,8 @@ Route::group(['middleware' => 'web'], function () {
 
 		$events = Event::orderBy('start_at', 'asc')->get();
 
-		return view('events', [
+		//return view('events', [
+		return Redirect::route('', [
 					'events' => $events,
 					'class' => $class
 				]);
@@ -263,7 +266,8 @@ Route::group(['middleware' => 'web'], function () {
 			'day'		=>	0
 		];
 
-		return view('users',[
+		//return view('users',[
+		return Redirect::route('users', [
 			'users' => $users,
 			'class' => $class
 			]);
@@ -295,7 +299,8 @@ Route::group(['middleware' => 'web'], function () {
 		if ($validator->fails()) {
 			$users = User::orderBy('username', 'asc')->get();
 
-			return view('users', [
+			//return view('users', [
+			return Redirect::route('users', [
 					'users' => $users,
 					'class' => $class
 				])
@@ -310,7 +315,8 @@ Route::group(['middleware' => 'web'], function () {
 
 		$users = User::orderBy('username', 'asc')->get();
 
-		return view('users', [
+		//return view('users', [
+		return Redirect::route('users', [
 					'users' => $users,
 					'class' => $class
 				]);
@@ -338,7 +344,8 @@ Route::group(['middleware' => 'web'], function () {
 
 		$users = User::orderBy('username', 'asc')->get();
 
-		return view('users', [
+		//return view('users', [
+		return Redirect::route('users', [
 					'users' => $users,
 					'class' => $class
 				]);
@@ -373,7 +380,8 @@ Route::group(['middleware' => 'web'], function () {
 		if ($validator->fails()) {
 			$users = User::orderBy('username', 'asc')->get();
 
-			return view('users', [
+			//return view('users', [
+			return Redirect::route('users', [
 					'users' => $users,
 					'class' => $class
 				])
@@ -387,7 +395,8 @@ Route::group(['middleware' => 'web'], function () {
 
 		$users = User::orderBy('username', 'asc')->get();
 
-		return view('users', [
+		//return view('users', [
+		return Redirect::route('users', [
 					'users' => $users,
 					'class' => $class
 				]);
