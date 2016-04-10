@@ -111,7 +111,7 @@ div[id^="tab"] { margin-top:45px; }
 
 .activeli { background-color:black; }
 
-@media screen and (min-width:974px) and (max-width:1005px) ){
+@media screen and (min-width:974px) and (max-width:1005px) {
 
 	.side-nav .nav-link { font-size: 1rem; }
 }
@@ -124,6 +124,6 @@ div[id^="tab"] { margin-top:45px; }
 
 @media screen and (max-width:659px) {
 
-	aside i { display:none; }
+	aside i { display:none !important; }
 
 }

@@ -53,9 +53,9 @@
 
 			<?php if ($a > 0) { ?>
 				<div class="col l5 m12">
-					<h5 class="center">Habilitados</h5>
 					<table class="striped">
 						<thead>
+							<tr><th>HABILITADOS</th></tr>
 							<tr>
 								<th data-field="username">Usuario</th>
 								<th data-field="rol">Rol</th>
@@ -151,9 +151,9 @@
 
 			<?php if ($a > 0) { ?>
 				<div class="col l5 offset-l1 m12 offset-m0">
-					<h5 class="center">Inhabilitados</h5>
 					<table class="striped">
 						<thead>
+							<tr><th>INHABILITADOS</th></tr>
 							<tr>
 								<th data-field="username">Usuario</th>
 								<th data-field="rol">Rol</th>
