@@ -91,7 +91,7 @@ Route::group(['middleware' => 'web'], function () {
 			$parameters = ['events' => $events, 'class' => $class];
 
 			//return view('events', [
-			return redirect('/')
+			return Redirect::to('/')
 				->with($parameters)
 				->withErrors($validator->errors());
 		}
@@ -108,7 +108,7 @@ Route::group(['middleware' => 'web'], function () {
 		$parameters = ['events' => $events, 'class' => $class];
 
 		//return view('events', [
-		return redirect('/')
+		return Redirect::to('/')
 			->with($parameters);
 	});
 
