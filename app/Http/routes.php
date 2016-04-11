@@ -64,9 +64,9 @@ Route::group(['middleware' => 'web'], function () {
 
 				if ($event_start >= $start_at && $end_at >= $event_end) {
 					$contse++;
-				} elseif ($event_start <= $start_at && $start_at < $event_end) {
+				} elseif ($start_at >= $event_start && $event_end > $start_at) {
 					$conts++;
-				} elseif ($event_start < $end_at && $end_at <= $event_end) {
+				} elseif ($end_at > $event_start && $event_end >= $end_at) {
 					$conte++;
 				}
 			}
