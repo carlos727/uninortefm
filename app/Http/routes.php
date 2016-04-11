@@ -86,7 +86,7 @@ Route::group(['middleware' => 'web'], function () {
 				$validator->errors()->add('end_at', 'Existe otro programa en medio de este horario!');
 			}
 
-			if ($contint > 0) {
+			if ($continto > 0) {
 				$validator->errors()->add('end_at', 'No se puede programar un contenido durante la emisión de otro!');
 			}
 		});
