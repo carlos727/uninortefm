@@ -57,17 +57,20 @@ Route::group(['middleware' => 'web'], function () {
 
 			$conts = 0;
 			$conte =  0;
-			$contse = 0;
+			$contover = 0;
+			$continto = 0;
 			foreach ($events as $event) {
 				$event_start = strtotime($event->start_at);
 				$event_end = strtotime($event->end_at);
 
-				if ($event_start >= $start_at && $end_at >= $event_end) {
-					$contse++;
-				} elseif ($start_at >= $event_start && $event_end > $start_at) {
-					$conts++;
-				} elseif ($end_at > $event_start && $event_end >= $end_at) {
+				if ($start_at <= $event_start && $end_at >= $event_end) {
+					$contover++;
+				} elseif ($start_at > $event_start && $end_at < $event_end) {
+					$continto++;
+				} elseif ($start_at < $event_start && $end_at > $event_start) {
 					$conte++;
+				} elseif ($start_at < $event_end && $end_at > $event_end) {
+					$conts++;
 				}
 			}
 
@@ -79,8 +82,12 @@ Route::group(['middleware' => 'web'], function () {
 				$validator->errors()->add('end_at', 'La hora de finalización no puede ser en medio de otro programa!');
 			}
 
-			if ($contse > 0) {
+			if ($contover > 0) {
 				$validator->errors()->add('end_at', 'Existe otro programa en medio de este horario!');
+			}
+
+			if ($contint > 0) {
+				$validator->errors()->add('end_at', 'No se puede programar un contenido durante la emisión de otro!');
 			}
 		});
 
