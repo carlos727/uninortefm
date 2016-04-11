@@ -58,15 +58,12 @@ Route::group(['middleware' => 'web'], function () {
 			$conts = 0;
 			$conte =  0;
 			$contover = 0;
-			$continto = 0;
 			foreach ($events as $event) {
 				$event_start = strtotime($event->start_at);
 				$event_end = strtotime($event->end_at);
 
 				if ($start_at <= $event_start && $end_at >= $event_end) {
 					$contover++;
-				} elseif ($start_at > $event_start && $end_at < $event_end) {
-					$continto++;
 				} elseif ($start_at < $event_start && $end_at > $event_start) {
 					$conte++;
 				} elseif ($start_at < $event_end && $end_at > $event_end) {
@@ -84,10 +81,6 @@ Route::group(['middleware' => 'web'], function () {
 
 			if ($contover > 0) {
 				$validator->errors()->add('end_at', 'Existe otro programa en medio de este horario!');
-			}
-
-			if ($continto > 0) {
-				$validator->errors()->add('end_at', 'No se puede programar un contenido durante la emisión de otro!');
 			}
 		});
 
