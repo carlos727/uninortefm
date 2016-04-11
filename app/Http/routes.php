@@ -217,18 +217,22 @@ Route::group(['middleware' => 'web'], function () {
 		$validator->after(function($validator) {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
-			$start_at = array_get($validator->getData(), 'start_at', null);
-			$end_at = array_get($validator->getData(), 'end_at', null);
+			$start_at = strtotime(array_get($validator->getData(), 'start_at', null));
+			$end_at = strtotime(array_get($validator->getData(), 'end_at', null));
 
 			$conts = 0;
 			$conte =  0;
+			$contover = 0;
 			foreach ($events as $event) {
-				if ($event->start_at < $start_at && $start_at < $event->end_at) {
-					$conts++;
-				}
+				$event_start = strtotime($event->start_at);
+				$event_end = strtotime($event->end_at);
 
-				if ($event->start_at < $end_at && $end_at < $event->end_at) {
+				if ($start_at <= $event_start && $end_at >= $event_end) {
+					$contover++;
+				} elseif ($start_at < $event_start && $end_at > $event_start) {
 					$conte++;
+				} elseif ($start_at < $event_end && $end_at > $event_end) {
+					$conts++;
 				}
 			}
 
@@ -238,6 +242,10 @@ Route::group(['middleware' => 'web'], function () {
 
 			if ($conte > 0) {
 				$validator->errors()->add('end_at', 'La hora de finalización no puede ser en medio de otro programa!');
+			}
+
+			if ($contover > 0) {
+				$validator->errors()->add('end_at', 'Existe otro programa en medio de este horario!');
 			}
 		});
 
