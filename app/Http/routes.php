@@ -58,11 +58,11 @@ Route::group(['middleware' => 'web'], function () {
 			$conts = 0;
 			$conte =  0;
 			foreach ($events as $event) {
-				if ($event->start_at < $start_at && $start_at < $event->end_at) {
+				if (strtotime($event->start_at) < strtotime($start_at) && strtotime($start_at) < strtotime($event->end_at)) {
 					$conts++;
 				}
 
-				if ($event->start_at < $end_at && $end_at < $event->end_at) {
+				if (strtotime($event->start_at) < strtotime($end_at) && strtotime($end_at) < strtotime($event->end_at)) {
 					$conte++;
 				}
 			}
