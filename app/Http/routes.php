@@ -51,6 +51,7 @@ Route::group(['middleware' => 'web'], function () {
 
 		$validator->after(function($validator) {
 			$events = Event::orderBy('start_at', 'asc')->get();
+			$request = $validator->getData();
 
 			$conts = 0;
 			$conte =  0;
