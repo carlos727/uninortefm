@@ -49,9 +49,9 @@ Route::group(['middleware' => 'web'], function () {
 			'day' => 'required|integer|between:1,7'
 		]);
 
-		$validator->after(function($validator) {
+		$validator->after(function($validator, $request) {
 			$events = Event::orderBy('start_at', 'asc')->get();
-			$request = var_dump($validator->getData());
+			//$request = $validator->getData();
 
 			$conts = 0;
 			$conte =  0;
