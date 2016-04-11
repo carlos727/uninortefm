@@ -44,7 +44,7 @@
 											<label for="event-start-at">Hora de Inicio</label>
 											<div id="event-start-at">
 												<div class="row dv-time">
-													<div class="col s1"><i class="material-icons prefix">alarm</i></div>
+													<div class="col s1 offset-s1"><i class="material-icons prefix">alarm</i></div>
 													<div class="col s3 offset-s1">
 														<select name="start_at_h">
 															<option value="00" selected="selected">00</option>
@@ -99,7 +99,7 @@
 											<label for="event-end-at">Hora de Finalizacion</label>
 											<div id="event-end-at">
 												<div class="row dv-time">
-													<div class="col s1"><i class="material-icons">alarm</i></div>
+													<div class="col s1  offset-s1"><i class="material-icons">alarm</i></div>
 													<div class="col s3 offset-s1">
 														<select name="end_at_h">
 															<option value="00" selected="selected">00</option>
@@ -209,7 +209,7 @@
 																	<label for="event-start-at">Hora de Inicio</label>
 																	<div id="event-start-at">
 																		<div class="row dv-time">
-																			<div class="col s1"><i class="material-icons prefix">alarm</i></div>
+																			<div class="col s1 offset-s1"><i class="material-icons prefix">alarm</i></div>
 																			<div class="col s3 offset-s1">
 																				{{ Form::select('start_at_h', [
 																					'00' => '00',
@@ -264,7 +264,7 @@
 																	<label for="event-end-at">Hora de Finalizacion</label>
 																	<div id="event-end-at">
 																		<div class="row dv-time">
-																			<div class="col s1"><i class="material-icons">alarm</i></div>
+																			<div class="col s1 offset-s1"><i class="material-icons">alarm</i></div>
 																			<div class="col s3 offset-s1">
 																				{{ Form::select('end_at_h', [
 																					'00' => '00',

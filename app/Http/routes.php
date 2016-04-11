@@ -52,23 +52,22 @@ Route::group(['middleware' => 'web'], function () {
 		$validator->after(function($validator) {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
-			$start_at = array_get($validator->getData(), 'start_at', null);
-			$end_at = array_get($validator->getData(), 'end_at', null);
+			$start_at = strtotime(array_get($validator->getData(), 'start_at', null));
+			$end_at = strtotime(array_get($validator->getData(), 'end_at', null));
 
 			$conts = 0;
 			$conte =  0;
 			$contse = 0;
 			foreach ($events as $event) {
-				if (strtotime($event->start_at) <= strtotime($start_at) && strtotime($start_at) < strtotime($event->end_at)) {
-					$conts++;
-				}
+				$event_start = strtotime($event->start_at);
+				$event_end = strtotime($event->end_at);
 
-				if (strtotime($event->start_at) < strtotime($end_at) && strtotime($end_at) <= strtotime($event->end_at)) {
-					$conte++;
-				}
-
-				if (strtotime($event->start_at) >= strtotime($start_at) && strtotime($end_at) >= strtotime($event->end_at)) {
+				if ($event_start >= $start_at && $end_at >= $event_end) {
 					$contse++;
+				} elseif ($event_start <= $start_at && $start_at < $event_end) {
+					$conts++;
+				} elseif ($event_start < $end_at && $end_at <= $event_end) {
+					$conte++;
 				}
 			}
 
