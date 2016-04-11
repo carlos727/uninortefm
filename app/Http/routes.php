@@ -36,25 +36,11 @@ Route::group(['middleware' => 'web'], function () {
 	*/
 	Route::post('/event', function (Request $request) {
 
-		$events = Event::orderBy('start_at', 'asc')->get();
-
 		$start_at = $request->start_at_h.":".$request->start_at_m;
 		$end_at = $request->end_at_h.":".$request->end_at_m;
 
 		$request ->merge(['start_at' => $start_at]);
 		$request->merge(['end_at' => $end_at]);
-
-		$conts = 0;
-		$conte =  0;
-		foreach ($events as $event) {
-			if ($event->start_at < $request->start_at && $request->start_at < $event->end_at) {
-				$conts++;
-			}
-
-			if ($event->start_at < $request->end_at && $request->end_at < $event->end_at) {
-				$conte++;
-			}
-		}
 
 		$validator = Validator::make($request->all(), [
 			'name' => 'required',
@@ -64,6 +50,20 @@ Route::group(['middleware' => 'web'], function () {
 		]);
 
 		$validator->after(function($validator) {
+			$events = Event::orderBy('start_at', 'asc')->get();
+
+			$conts = 0;
+			$conte =  0;
+			foreach ($events as $event) {
+				if ($event->start_at < $request->start_at && $request->start_at < $event->end_at) {
+					$conts++;
+				}
+
+				if ($event->start_at < $request->end_at && $request->end_at < $event->end_at) {
+					$conte++;
+				}
+			}
+
 		    if ($conts > 0) {
 				$validator->errors()->add('start_at', 'La hora de inicio no puede ser en medio de otro programa!');
 			}
@@ -110,6 +110,8 @@ Route::group(['middleware' => 'web'], function () {
 		}
 
 		if ($validator->fails()) {
+			$events = Event::orderBy('start_at', 'asc')->get();
+
 			return view('events', [
 					'events' => $events,
 					'class' => $class
@@ -186,8 +188,6 @@ Route::group(['middleware' => 'web'], function () {
 	*/
 	Route::put('/event/{event}', function ($id, Request $request) {
 
-		$events = Event::orderBy('start_at', 'asc')->get();
-
 		$event = Event::find($id);
 
 		$start_at = $request->start_at_h.":".$request->start_at_m;
@@ -195,18 +195,6 @@ Route::group(['middleware' => 'web'], function () {
 
 		$request ->merge(['start_at' => $start_at]);
 		$request->merge(['end_at' => $end_at]);
-
-		$conts = 0;
-		$conte =  0;
-		foreach ($events as $e) {
-			if ($e->start_at < $request->start_at && $request->start_at < $e->end_at) {
-				$conts++;
-			}
-
-			if ($e->start_at < $request->end_at && $request->end_at < $e->end_at) {
-				$conte++;
-			}
-		}
 
 		$validator = Validator::make($request->all(), [
 			'name' => 'required',
@@ -216,6 +204,20 @@ Route::group(['middleware' => 'web'], function () {
 		]);
 
 		$validator->after(function($validator) {
+			$events = Event::orderBy('start_at', 'asc')->get();
+
+			$conts = 0;
+			$conte =  0;
+			foreach ($events as $e) {
+				if ($e->start_at < $request->start_at && $request->start_at < $e->end_at) {
+					$conts++;
+				}
+
+				if ($e->start_at < $request->end_at && $request->end_at < $e->end_at) {
+					$conte++;
+				}
+			}
+
 		    if ($conts > 0) {
 				$validator->errors()->add('start_at', 'La hora de inicio no puede ser en medio de otro programa!');
 			}
@@ -262,6 +264,8 @@ Route::group(['middleware' => 'web'], function () {
 		}
 
 		if ($validator->fails()) {
+			$events = Event::orderBy('start_at', 'asc')->get();
+
 			return view('events', [
 					'events' => $events,
 					'class' => $class
@@ -306,14 +310,14 @@ Route::group(['middleware' => 'web'], function () {
 	*/
 	Route::post('/users/user', function (Request $request) {
 
-		$users = User::orderBy('username', 'asc')->get();
-
 		$validator = Validator::make($request->all(), [
 			'username'	=>	'required',
 			'rol'		=>	'required'
 		]);
 
 		$validator->after(function($validator) {
+			$users = User::orderBy('username', 'asc')->get();
+
 			if ($users->contains('username',$request->username)) {
 				$validator->errors()->add('username', 'Este usuario ya existe!');
 			}
@@ -325,6 +329,8 @@ Route::group(['middleware' => 'web'], function () {
 		];
 
 		if ($validator->fails()) {
+			$users = User::orderBy('username', 'asc')->get();
+
 			return Redirect::route('users', [
 					'users' => $users,
 					'class' => $class
