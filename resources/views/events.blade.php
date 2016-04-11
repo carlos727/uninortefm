@@ -73,13 +73,21 @@
 															<option value="23">23</option>
 														</select>
 													</div>
-													<div class="col s1 offset-s1"><p>:</p></div>
+													<div class="col s1"><p class="center">:</p></div>
 													<div class="col s3">
 														<select name="start_at_m">
 															<option value="00" selected="selected">00</option>
+															<option value="05">05</option>
+															<option value="10">10</option>
 															<option value="15">15</option>
+															<option value="20">20</option>
+															<option value="25">25</option>
 															<option value="30">30</option>
+															<option value="35">35</option>
+															<option value="40">40</option>
 															<option value="45">45</option>
+															<option value="50">50</option>
+															<option value="55">55</option>
 															<option value="59">59</option>
 														</select>
 													</div>
@@ -120,13 +128,21 @@
 															<option value="23">23</option>
 														</select>
 													</div>
-													<div class="col s1 offset-s1"><p>:</p></div>
-													<div class="col s3 dv-time">
+													<div class="col s1"><p class="center">:</p></div>
+													<div class="col s3">
 														<select name="end_at_m">
 															<option value="00" selected="selected">00</option>
+															<option value="05">05</option>
+															<option value="10">10</option>
 															<option value="15">15</option>
+															<option value="20">20</option>
+															<option value="25">25</option>
 															<option value="30">30</option>
+															<option value="35">35</option>
+															<option value="40">40</option>
 															<option value="45">45</option>
+															<option value="50">50</option>
+															<option value="55">55</option>
 															<option value="59">59</option>
 														</select>
 													</div>
@@ -222,13 +238,21 @@
 																					'23' => '23'
 																				], substr($event->start_at,0,2) ) }}
 																			</div>
-																			<div class="col s1 offset-s1"><p>:</p></div>
+																			<div class="col s1"><p class="center">:</p></div>
 																			<div class="col s3">
 																				{{ Form::select('start_at_m', [
 																					'00' => '00',
+																					'05' => '05',
+																					'10' => '10',
 																					'15' => '15',
+																					'20' => '20',
+																					'25' => '25',
 																					'30' => '30',
+																					'35' => '35',
+																					'40' => '40',
 																					'45' => '45',
+																					'50' => '50',
+																					'55' => '55',
 																					'59' => '59'
 																				], substr($event->start_at,3) ) }}
 																			</div>
@@ -269,13 +293,21 @@
 																					'23' => '23'
 																				], substr($event->end_at,0,2) ) }}
 																			</div>
-																			<div class="col s1 offset-s1"><p>:</p></div>
+																			<div class="col s1"><p class="center">:</p></div>
 																			<div class="col s3">
 																				{{ Form::select('end_at_m', [
 																					'00' => '00',
+																					'05' => '05',
+																					'10' => '10',
 																					'15' => '15',
+																					'20' => '20',
+																					'25' => '25',
 																					'30' => '30',
+																					'35' => '35',
+																					'40' => '40',
 																					'45' => '45',
+																					'50' => '50',
+																					'55' => '55',
 																					'59' => '59'
 																				], substr($event->end_at,3) ) }}
 																			</div>

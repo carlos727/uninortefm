@@ -36,11 +36,25 @@ Route::group(['middleware' => 'web'], function () {
 	*/
 	Route::post('/event', function (Request $request) {
 
+		$events = Event::orderBy('start_at', 'asc')->get();
+
 		$start_at = $request->start_at_h.":".$request->start_at_m;
 		$end_at = $request->end_at_h.":".$request->end_at_m;
 
 		$request ->merge(['start_at' => $start_at]);
 		$request->merge(['end_at' => $end_at]);
+
+		$conts = 0;
+		$conte =  0;
+		foreach ($events as $event) {
+			if ($event->start_at < $request->start_at && $request->start_at < $event->end_at) {
+				$conts++;
+			}
+
+			if ($event->start_at < $request->end_at && $request->end_at < $event->end_at) {
+				$conte++;
+			}
+		}
 
 		$validator = Validator::make($request->all(), [
 			'name' => 'required',
@@ -48,6 +62,16 @@ Route::group(['middleware' => 'web'], function () {
 			'end_at' => ['required', 'regex:^(([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)$^'],
 			'day' => 'required|integer|between:1,7'
 		]);
+
+		$validator->after(function($validator) {
+		    if ($conts > 0) {
+				$validator->errors()->add('start_at', 'La hora de inicio no puede ser en medio de otro programa!');
+			}
+
+			if ($conte > 0) {
+				$validator->errors()->add('end_at', 'La hora de finalización no puede ser en medio de otro programa!');
+			}
+		});
 
 		$class = [
 			'lunes'		=>	' ',
@@ -86,8 +110,6 @@ Route::group(['middleware' => 'web'], function () {
 		}
 
 		if ($validator->fails()) {
-			$events = Event::orderBy('start_at', 'asc')->get();
-
 			return view('events', [
 					'events' => $events,
 					'class' => $class
@@ -164,6 +186,8 @@ Route::group(['middleware' => 'web'], function () {
 	*/
 	Route::put('/event/{event}', function ($id, Request $request) {
 
+		$events = Event::orderBy('start_at', 'asc')->get();
+
 		$event = Event::find($id);
 
 		$start_at = $request->start_at_h.":".$request->start_at_m;
@@ -172,12 +196,34 @@ Route::group(['middleware' => 'web'], function () {
 		$request ->merge(['start_at' => $start_at]);
 		$request->merge(['end_at' => $end_at]);
 
+		$conts = 0;
+		$conte =  0;
+		foreach ($events as $e) {
+			if ($e->start_at < $request->start_at && $request->start_at < $e->end_at) {
+				$conts++;
+			}
+
+			if ($e->start_at < $request->end_at && $request->end_at < $e->end_at) {
+				$conte++;
+			}
+		}
+
 		$validator = Validator::make($request->all(), [
 			'name' => 'required',
 			'start_at' => ['required', 'regex:^(([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)$^', 'before:end_at'],
 			'end_at' => ['required', 'regex:^(([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)$^'],
 			'day' => 'required|integer|between:1,7'
 		]);
+
+		$validator->after(function($validator) {
+		    if ($conts > 0) {
+				$validator->errors()->add('start_at', 'La hora de inicio no puede ser en medio de otro programa!');
+			}
+
+			if ($conte > 0) {
+				$validator->errors()->add('end_at', 'La hora de finalización no puede ser en medio de otro programa!');
+			}
+		});
 
 		$class = [
 			'lunes'		=>	' ',
@@ -216,8 +262,6 @@ Route::group(['middleware' => 'web'], function () {
 		}
 
 		if ($validator->fails()) {
-			$events = Event::orderBy('start_at', 'asc')->get();
-
 			return view('events', [
 					'events' => $events,
 					'class' => $class
@@ -247,16 +291,8 @@ Route::group(['middleware' => 'web'], function () {
 		$users = User::orderBy('username','asc')->get();
 
 		$class = [
-			'lunes'		=>	' ',
-			'martes'	=>	' ',
-			'miercoles'	=>	' ',
-			'jueves'	=>	' ',
-			'viernes'	=>	' ',
-			'sabado'	=>	' ',
-			'domingo'	=>	' ',
 			'users'		=>	'activeli',
-			'events'	=>	' ',
-			'day'		=>	0
+			'events'	=>	' '
 		];
 
 		return view('users',[
@@ -270,28 +306,25 @@ Route::group(['middleware' => 'web'], function () {
 	*/
 	Route::post('/users/user', function (Request $request) {
 
+		$users = User::orderBy('username', 'asc')->get();
+
 		$validator = Validator::make($request->all(), [
 			'username'	=>	'required',
 			'rol'		=>	'required'
 		]);
 
+		$validator->after(function($validator) {
+			if ($users->contains('username',$request->username)) {
+				$validator->errors()->add('username', 'Este usuario ya existe!');
+			}
+		});
+
 		$class = [
-			'lunes'		=>	' ',
-			'martes'	=>	' ',
-			'miercoles'	=>	' ',
-			'jueves'	=>	' ',
-			'viernes'	=>	' ',
-			'sabado'	=>	' ',
-			'domingo'	=>	' ',
 			'users'		=>	'activeli',
-			'events'	=>	' ',
-			'day'		=>	0
+			'events'	=>	' '
 		];
 
 		if ($validator->fails()) {
-			$users = User::orderBy('username', 'asc')->get();
-
-			//return view('users', [
 			return Redirect::route('users', [
 					'users' => $users,
 					'class' => $class
@@ -307,7 +340,6 @@ Route::group(['middleware' => 'web'], function () {
 
 		$users = User::orderBy('username', 'asc')->get();
 
-		//return view('users', [
 		return Redirect::route('users', [
 					'users' => $users,
 					'class' => $class
@@ -320,23 +352,14 @@ Route::group(['middleware' => 'web'], function () {
 	Route::delete('/users/user/{user}', function ($id) {
 
 		$class = [
-			'lunes'		=>	' ',
-			'martes'	=>	' ',
-			'miercoles'	=>	' ',
-			'jueves'	=>	' ',
-			'viernes'	=>	' ',
-			'sabado'	=>	' ',
-			'domingo'	=>	' ',
 			'users'		=>	'activeli',
-			'events'	=>	' ',
-			'day'		=>	0
+			'events'	=>	' '
 		];
 
 		User::findOrFail($id)->delete();
 
 		$users = User::orderBy('username', 'asc')->get();
 
-		//return view('users', [
 		return Redirect::route('users', [
 					'users' => $users,
 					'class' => $class
@@ -350,44 +373,16 @@ Route::group(['middleware' => 'web'], function () {
 
 		$user = User::find($id);
 
-		/*$validator = Validator::make($request->all(), [
-			'username'	=>	'required',
-			'rol'		=>	'required',
-			'isActive'	=>	'required'
-		]);*/
-
 		$class = [
-			'lunes'		=>	' ',
-			'martes'	=>	' ',
-			'miercoles'	=>	' ',
-			'jueves'	=>	' ',
-			'viernes'	=>	' ',
-			'sabado'	=>	' ',
-			'domingo'	=>	' ',
 			'users'		=>	'activeli',
-			'events'	=>	' ',
-			'day'		=>	0
+			'events'	=>	' '
 		];
 
-		/*if ($validator->fails()) {
-			$users = User::orderBy('username', 'asc')->get();
-
-			//return view('users', [
-			return Redirect::route('users', [
-					'users' => $users,
-					'class' => $class
-				])
-				->withErrors($validator->errors());
-		}*/
-
-		$user->username = $request->username;
-		$user->rol = $request->rol;
 		$user->isActive = $request->isActive;
 		$user->save();
 
 		$users = User::orderBy('username', 'asc')->get();
 
-		//return view('users', [
 		return Redirect::route('users', [
 					'users' => $users,
 					'class' => $class
