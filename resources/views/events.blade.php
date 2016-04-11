@@ -313,6 +313,7 @@
 																			</div>
 																		</div>
 																		<input name="end_at" type="time" class="hide" value=" ">
+																		<input name="id" type="number" class="hide" value="{{ $event->id }}">
 																	</div>
 																</div>
 															</div>

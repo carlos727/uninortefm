@@ -71,16 +71,12 @@ Route::group(['middleware' => 'web'], function () {
 				}
 			}
 
-		    if ($conts > 0) {
-				$validator->errors()->add('start_at', 'La hora de inicio no puede ser en medio de otro programa!');
-			}
-
-			if ($conte > 0) {
-				$validator->errors()->add('end_at', 'La hora de finalización no puede ser en medio de otro programa!');
-			}
-
-			if ($contover > 0) {
+		    if ($contover > 0) {
 				$validator->errors()->add('end_at', 'Existe otro programa en medio de este horario!');
+			} elseif ($conte > 0) {
+				$validator->errors()->add('end_at', 'La hora de finalización no puede ser en medio de otro programa!');
+			} elseif ($conts > 0) {
+				$validator->errors()->add('start_at', 'La hora de inicio no puede ser en medio de otro programa!');
 			}
 		});
 
@@ -219,33 +215,32 @@ Route::group(['middleware' => 'web'], function () {
 
 			$start_at = strtotime(array_get($validator->getData(), 'start_at', null));
 			$end_at = strtotime(array_get($validator->getData(), 'end_at', null));
+			$id = array_get($validator->getData(), 'id', null);
 
 			$conts = 0;
 			$conte =  0;
 			$contover = 0;
 			foreach ($events as $event) {
-				$event_start = strtotime($event->start_at);
-				$event_end = strtotime($event->end_at);
+				if ($event->id <> $id) {
+					$event_start = strtotime($event->start_at);
+					$event_end = strtotime($event->end_at);
 
-				if ($start_at <= $event_start && $end_at >= $event_end) {
-					$contover++;
-				} elseif ($start_at < $event_start && $end_at > $event_start) {
-					$conte++;
-				} elseif ($start_at < $event_end && $end_at > $event_end) {
-					$conts++;
+					if ($start_at <= $event_start && $end_at >= $event_end) {
+						$contover++;
+					} elseif ($start_at < $event_start && $end_at > $event_start) {
+						$conte++;
+					} elseif ($start_at < $event_end && $end_at > $event_end) {
+						$conts++;
+					}
 				}
-			}
-
-		    if ($conts > 0) {
-				$validator->errors()->add('start_at', 'La hora de inicio no puede ser en medio de otro programa!');
-			}
-
-			if ($conte > 0) {
-				$validator->errors()->add('end_at', 'La hora de finalización no puede ser en medio de otro programa!');
 			}
 
 			if ($contover > 0) {
 				$validator->errors()->add('end_at', 'Existe otro programa en medio de este horario!');
+			} elseif ($conte > 0) {
+				$validator->errors()->add('end_at', 'La hora de finalización no puede ser en medio de otro programa!');
+			} elseif ($conts > 0) {
+				$validator->errors()->add('start_at', 'La hora de inicio no puede ser en medio de otro programa!');
 			}
 		});
 
