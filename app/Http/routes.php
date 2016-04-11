@@ -49,18 +49,20 @@ Route::group(['middleware' => 'web'], function () {
 			'day' => 'required|integer|between:1,7'
 		]);
 
-		$validator->after(function($validator, $request) {
+		$validator->after(function($validator) {
 			$events = Event::orderBy('start_at', 'asc')->get();
-			//$request = $validator->getData();
+
+			$start_at = array_get($validator->getData(), 'start_at', null);
+			$end_at = array_get($validator->getData(), 'end_at', null);
 
 			$conts = 0;
 			$conte =  0;
 			foreach ($events as $event) {
-				if ($event->start_at < $request->start_at && $request->start_at < $event->end_at) {
+				if ($event->start_at < $start_at && $start_at < $event->end_at) {
 					$conts++;
 				}
 
-				if ($event->start_at < $request->end_at && $request->end_at < $event->end_at) {
+				if ($event->start_at < $end_at && $end_at < $event->end_at) {
 					$conte++;
 				}
 			}
@@ -207,14 +209,17 @@ Route::group(['middleware' => 'web'], function () {
 		$validator->after(function($validator) {
 			$events = Event::orderBy('start_at', 'asc')->get();
 
+			$start_at = array_get($validator->getData(), 'start_at', null);
+			$end_at = array_get($validator->getData(), 'end_at', null);
+
 			$conts = 0;
 			$conte =  0;
-			foreach ($events as $e) {
-				if ($e->start_at < $request->start_at && $request->start_at < $e->end_at) {
+			foreach ($events as $event) {
+				if ($event->start_at < $start_at && $start_at < $event->end_at) {
 					$conts++;
 				}
 
-				if ($e->start_at < $request->end_at && $request->end_at < $e->end_at) {
+				if ($event->start_at < $end_at && $end_at < $event->end_at) {
 					$conte++;
 				}
 			}
@@ -319,7 +324,10 @@ Route::group(['middleware' => 'web'], function () {
 		$validator->after(function($validator) {
 			$users = User::orderBy('username', 'asc')->get();
 
-			if ($users->contains('username',$request->username)) {
+			$username = array_get($validator->getData(), 'username', null);
+
+
+			if ($users->contains('username',$username)) {
 				$validator->errors()->add('username', 'Este usuario ya existe!');
 			}
 		});
