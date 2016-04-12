@@ -415,6 +415,14 @@ Route::group(['middleware' => 'web'], function () {
 				]);
 	});
 
+
+	/*
+	* 
+	*/
+	Route::get('/login', function() {
+		return view('login');
+	});
+
 	/*
 	* Show all events in json format
 	*/
