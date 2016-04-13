@@ -429,6 +429,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/json', function(){
 		$events = DB::table('events')
 					->select('id', 'name', 'start_at', 'end_at', 'day')
+					->groupBy('day')
 					->get();
 
 		return Response::json($events);
