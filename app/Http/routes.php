@@ -442,6 +442,7 @@ Route::group(['middleware' => 'web'], function () {
 		$events = DB::table('events')
 					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',1)
+					->orderBy('start_at', 'asc')
 					->get();
 
 		return Response::json($events);
@@ -451,6 +452,7 @@ Route::group(['middleware' => 'web'], function () {
 		$events = DB::table('events')
 					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',2)
+					->orderBy('start_at', 'asc')
 					->get();
 
 		return Response::json($events);
@@ -460,6 +462,7 @@ Route::group(['middleware' => 'web'], function () {
 		$events = DB::table('events')
 					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',3)
+					->orderBy('start_at', 'asc')
 					->get();
 
 		return Response::json($events);
@@ -469,6 +472,7 @@ Route::group(['middleware' => 'web'], function () {
 		$events = DB::table('events')
 					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',4)
+					->orderBy('start_at', 'asc')
 					->get();
 
 		return Response::json($events);
@@ -478,6 +482,7 @@ Route::group(['middleware' => 'web'], function () {
 		$events = DB::table('events')
 					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',5)
+					->orderBy('start_at', 'asc')
 					->get();
 
 		return Response::json($events);
@@ -487,6 +492,7 @@ Route::group(['middleware' => 'web'], function () {
 		$events = DB::table('events')
 					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',6)
+					->orderBy('start_at', 'asc')
 					->get();
 
 		return Response::json($events);
@@ -496,6 +502,7 @@ Route::group(['middleware' => 'web'], function () {
 		$events = DB::table('events')
 					->select('id', 'name', 'start_at', 'end_at', 'day')
 					->where('day','=',7)
+					->orderBy('start_at', 'asc')
 					->get();
 
 		return Response::json($events);
