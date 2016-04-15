@@ -50,10 +50,11 @@ Route::group(['middleware' => 'web'], function () {
 		]);
 
 		$validator->after(function($validator) {
-			$events = Event::orderBy('start_at', 'asc')->get();
-
+			$day = array_get($validator->getData(), 'day', null);
 			$start_at = strtotime(array_get($validator->getData(), 'start_at', null));
 			$end_at = strtotime(array_get($validator->getData(), 'end_at', null));
+
+			$events = Event::where('day','=', $day)->orderBy('start_at', 'asc')->get();
 
 			$conts = 0;
 			$conte =  0;
@@ -211,11 +212,12 @@ Route::group(['middleware' => 'web'], function () {
 		]);
 
 		$validator->after(function($validator) {
-			$events = Event::orderBy('start_at', 'asc')->get();
-
+			$day = array_get($validator->getData(), 'day', null);
+			$id = array_get($validator->getData(), 'id', null);
 			$start_at = strtotime(array_get($validator->getData(), 'start_at', null));
 			$end_at = strtotime(array_get($validator->getData(), 'end_at', null));
-			$id = array_get($validator->getData(), 'id', null);
+
+			$events = Event::where('day','=', $day)->orderBy('start_at', 'asc')->get();			
 
 			$conts = 0;
 			$conte =  0;
